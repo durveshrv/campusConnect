@@ -1,0 +1,302 @@
+
+/*=============================================================
+    Authour URI: www.binarycart.com
+    License: Commons Attribution 3.0
+
+    http://creativecommons.org/licenses/by/3.0/
+
+    100% To use For Personal And Commercial Use.
+    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
+   
+    ========================================================  */
+/*==============================================
+    GENERAL  STYLES    
+    =============================================*/
+    body {
+        font-family: 'Lato', sans-serif;
+        line-height: 30px;
+      }
+      
+       #wrapper {
+          width: 100%;
+          margin-top:50px;
+      }
+      
+      #page-wrapper {
+          /* padding: 15px 15px;
+          min-height: 600px; */
+          background:#F3F3F3;
+         
+      }
+      #page-inner {
+          width:100%;
+          margin:10px 20px 10px 0px;
+          background-color:#fff!important;
+          padding:10px;
+          min-height:1050px;
+          position: fixed;
+      }
+      .pad-top {
+          padding-top:15px;
+      }
+      /*==============================================
+          MENU STYLES    
+          =============================================*/
+      
+      .sidebar-collapse .nav {
+          padding:0;
+      
+      }
+      
+      .sidebar-collapse > .nav > li > a {
+          padding:15px 10px;
+          color: black;
+      font-weight: 100;
+      font-size: 16px;
+      }
+      .sidebar-collapse{
+          padding:15px 10px;
+          color: black;
+          font-size: 16px;
+      }
+      .sidebar-collapse > .nav > li {
+          border-bottom:1px solid #e1e1e1;
+      }
+      .sidebar-collapse .nav > li > a:hover,
+      .sidebar-collapse .nav > li > a:focus {
+          
+          background:#F3F3F3;
+          outline:0;
+      }
+      
+      .navbar-side {
+          border:none;
+          background-color: #fff;
+          
+      }
+      .navbar-inverse {
+      
+      background-color:#E8EAED;
+      border-color: #F0F0F0;
+      min-height:51px;
+      }
+      
+      
+      .nav > li > a > i {
+          margin-right:10px;
+      }
+      .logout-spn {
+          float:right;
+          color:#fff;
+          font-size:25px;
+          font-weight:800;
+          margin:20px;
+          margin: 10px 25px 10px 50px;
+      }
+          .logout-spn a {
+              text-decoration:none;
+          }
+      .active-link {
+          background-color:#f3f3f3;
+      }
+          
+      /*==============================================
+          DASHBOARD STYLES    
+          =============================================*/
+      .div-square {
+          padding:15px;
+          border:3px double #e1e1e1;
+          -webkit-border-radius:8px;
+         -moz-border-radius:8px;
+          border-radius:8px;
+          margin:5px;
+          text-decoration: none;
+      
+      }
+      
+      .div-square:hover {
+         
+           border: 1px solid  black;
+           text-decoration:none;
+      }
+      
+      .div-square > a{
+          text-decoration: none;
+      }
+      /* Registration Form Biker */
+      .content form .user-details{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          margin: 20px 0 12px 0;
+        }
+        form .user-details .input-box{
+          margin-bottom: 15px;
+          width: calc(100% / 2 - 20px);
+        }
+        form span{
+          font-size: 15px;
+        }
+        form .input-box span.details{
+          display: block;
+          font-weight: 500;
+          margin-bottom: 5px;
+        }
+        .user-details .input-box input{
+          height: 45px;
+          width: 100%;
+          outline: none;
+          font-size: 16px;
+          border-radius: 5px;
+          padding-left: 15px;
+          border: 1px solid #ccc;
+          transition: all 0.3s ease;
+        }
+        .user-details .input-box input:focus,
+        .user-details .input-box input:valid,
+        .box:focus{
+          border-color: #2770D5;
+        }
+         form .gender-details .gender-title{
+          font-size: 20px;
+          font-weight: 500;
+         }
+         form .category{
+           display: flex;
+           width: 80%;
+           margin: 14px 0 ;
+           justify-content: space-between;
+         }
+         form .category label{
+           display: flex;
+           align-items: center;
+           cursor: pointer;
+         }
+         form .category label .dot{
+          height: 18px;
+          width: 18px;
+          border-radius: 50%;
+          margin-right: 10px;
+          background: #d9d9d9;
+          border: 5px solid transparent;
+          transition: all 0.3s ease;
+        }
+         #dot-1:checked ~ .category label .one,
+         #dot-2:checked ~ .category label .two,
+         #dot-3:checked ~ .category label .three{
+           background: #2770D5;
+           border-color: #d9d9d9;
+         }
+         form input[type="radio"]{
+           display: none;
+         }
+         form .button{
+           height: 45px;
+           margin: 35px 0
+         }
+         form .button input{
+           height: 100%;
+           width: 100%;
+           border-radius: 5px;
+           border: none;
+           color: #fff;
+           font-size: 18px;
+           font-weight: 500;
+           letter-spacing: 1px;
+           cursor: pointer;
+           transition: all 0.3s ease;
+           background: linear-gradient(135deg, #71b7e6, #2770D5);
+         }
+         form .button input:hover{
+          /* transform: scale(0.99); */
+          background: linear-gradient(-135deg, #71b7e6, #2770D5);
+          }
+      
+          /* Select tag */
+          .box{
+              color: #000;
+              border: 1px solid #ccc;
+              border-bottom-width: 2px;
+              height: 45px;
+          width: 100%;
+          outline: none;
+          font-size: 16px;
+          border: 1px solid #d9d9d9;
+          padding-left: 15px;
+          padding-right: 100px;
+            }
+            .checkbox-wrapper-19{
+              color: #000;
+      
+              height: 45px;
+          width: 100%;
+          outline: none;
+         text-decoration: none;
+          
+          padding-right: 100px;
+            }
+         @media(max-width: 584px){
+         .container{
+          max-width: 100%;
+        }
+        form .user-details .input-box{
+            margin-bottom: 15px;
+            width: 100%;
+          }
+          form .category{
+            width: 100%;
+          }
+          .content form .user-details{
+            max-height: 300px;
+            overflow-y: scroll;
+          }
+          .user-details::-webkit-scrollbar{
+            width: 5px;
+          }
+          }
+      
+          /* Checkbox */
+         
+            
+      /*==============================================
+          FOOTER STYLES     
+          =============================================*/
+      .footer {
+          background-color:#214761;
+          width:100%;
+          color:#fff;
+          padding:20px 50px 20px 50px;
+           padding-left:20px;
+      }
+      
+      
+          .footer > a, .footer>a:hover {
+             
+              color:#fff;
+          }
+      
+      /*==============================================
+          MEDIA QUERIES     
+          =============================================*/
+       
+       @media(min-width:768px) {
+           #page-wrapper{
+                     margin: 0 0 0 260px;
+              /* padding: 15px 30px;
+              min-height: 1050px; */
+              
+          }
+          
+          
+          .navbar-side {
+              z-index: 1;
+              position: absolute;
+              width: 260px;
+             
+          }
+      
+       
+      }
+      
+      
+      

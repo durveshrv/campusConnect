@@ -1,0 +1,201 @@
+
+.container{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+    overflow: auto;
+}
+
+.card{
+    background-color: #fff;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 10px;
+}
+
+.btn{
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: rgb(255, 255, 255);
+    padding: 10px 30px;
+}
+
+.btn-outline{
+    background-color: var(--button-color);
+    border: 1px solid rgb(255, 255, 255);
+}
+.btn:hover{
+    transform: scale(0.98);
+}
+
+/*Backgrounds & Colored Buttons */
+.btn-primary, .bg-primary{
+    background-color: var(--button-color);
+    color: rgb(252, 252, 252);
+}
+.btn-secondary, .bg-secondary{
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+.btn-dark, .bg-dark{
+    background-color: var(--dark-color);
+    color: #fff;
+}
+.btn-light, .bg-light{
+    background-color: var(--light-color);
+    color: #333;
+}
+
+.btn-primary a, .bg-primary a, .btn-secondary a, .bg-secondary a, .btn-dark a, .bg-dark a{
+    color: #fff;
+}
+
+/*text-color*/
+.text-primary{
+    color: var(--primary-color);
+}
+.text-secondary{
+    color: var(--secondary-color);
+}
+.text-dark{
+    color: var(--dark-color);
+}
+.text-light{
+    color: var(--light-color);
+}
+
+.text-center{
+    text-align: center;
+}
+
+/*Alert*/
+.alert{
+    background-color: var(--light-color);
+    padding: 10px 20px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+.alert i{
+    margin-right: 10px;
+}
+.alert-success{
+    background-color: var(--success-color);
+    color: #fff;
+}
+.alert-error{
+    background-color: var(--error-color);
+    color: #fff;
+}
+
+
+/*Text Sizes*/
+.lead{
+    font-size: 20px;
+}
+
+.sm{
+    font-size: 1rem;
+}
+.md{
+    font-size: 2rem;
+}
+.lg{
+    font-size: 2rem;
+}
+.xl{
+    font-size: 4rem;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* margin*/
+.my-1{
+    margin: 1rem 0;
+}
+.my-2{
+    margin: 1.5rem 0;
+}
+.my-3{
+    margin: 2rem 0;
+}
+.my-4{
+    margin: 3rem 0;
+}
+.my-5{
+    margin: 4rem 0;
+}
+
+.m-1{
+    margin: 1rem;
+}
+.m-2{
+    margin: 1.5rem;
+}
+.m-3{
+    margin: 2rem;
+}
+.m-4{
+    margin: 3rem;
+}
+.m-5{
+    margin: 4rem;
+}
+
+
+/* Padding*/
+.py-1{
+    padding: 1rem 0;
+}
+.py-2{
+    padding: 1.5rem 0;
+}
+.py-3{
+    padding: 2rem 0;
+}
+.py-4{
+    padding: 3rem 0;
+}
+.py-5{
+    padding: 4rem 0;
+}
+
+.p-1{
+    margin: 1rem;
+}
+.p-2{
+    margin: 1.5rem;
+}
+.p-3{
+    margin: 2rem;
+}
+.p-4{
+    margin: 3rem;
+}
+.p-5{
+    margin: 4rem;
+}
+
+
+

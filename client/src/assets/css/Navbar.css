@@ -1,0 +1,89 @@
+/* Add this CSS to your stylesheets */
+
+/* Navbar */
+.navbar {
+    background-color: #ffffff;
+    border: none;
+    color: black;
+    margin-bottom: 0;
+    position: fixed;
+  }
+  
+  .navbar-brand {
+    padding: 15px 15px;
+  }
+  
+  .navbar-brand p {
+    margin: 0;
+    color: #fff;
+    
+  }
+  
+  /* Sidebar */
+  .navbar-side {
+    background-color: #f1f1f1;
+    padding: 0;
+    height: 100%;
+    
+  }
+  
+  .sidebar-collapse {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    background: #ffffff;
+    overflow-y: auto;
+    transition: width 0.5s;
+
+  }
+  
+  .sidebar-collapse ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-collapse li {
+    padding: 15px;
+    border-bottom: 1px solid #ffffff;
+    width: 100%;
+
+  }
+  .sidebar-collapse li:hover {
+    border-bottom: 1px solid #3d40ff;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  
+  .sidebar-collapse a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .sidebar-collapse a:hover {
+    color: #e8491d;
+  }
+  
+  /* Toggle button */
+  .navbar-toggle {
+    background-color: #e8491d;
+    border: none;
+  }
+  
+  .navbar-toggle .icon-bar {
+    background-color: #fff;
+  }
+  
+  /* Media Query for responsiveness */
+  @media (max-width: 768px) {
+    .sidebar-collapse {
+      width: 0;
+    }
+  
+    .navbar-toggle {
+      display: block;
+    }
+  }
+  
