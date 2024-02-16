@@ -1,16 +1,4 @@
-import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
-// import "../assets/css/Navbar.css";
-import Logout from "./logout";
-import {
-  FaDesktop,
-  FaPersonBiking,
-  FaBook,
-  FaLightbulb,
-  FaUsers,
-  FaQuora,
-  FaEdit,
-} from "react-icons/fa";
+import React from "react";
 import {
   MdDashboard,
   MdDirectionsBike,
@@ -19,84 +7,118 @@ import {
 } from "react-icons/md";
 import { IoBed, IoLogOut } from "react-icons/io5";
 import { GiBuyCard } from "react-icons/gi";
-import "../assets/css/Navbar.css";
-
-const DashNav = () => {
-  useEffect(() => {
-    // Include Bootstrap and jQuery script dynamically
-    const script1 = document.createElement("script");
-    script1.src = "https://code.jquery.com/jquery-3.6.0.min.js";
-    script1.crossOrigin = "anonymous";
-    script1.integrity = "sha256-GLT2LmPk1FgPdG7sEC9C1b8tBWTafkdI1j03JmC4z5I=";
-    document.body.appendChild(script1);
-
-    const script2 = document.createElement("script");
-    script2.src =
-      "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js";
-    script2.crossOrigin = "anonymous";
-    script2.integrity =
-      "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCvnbB9PLc+ssAgcfUKFJFj/DAiSNa";
-    document.body.appendChild(script2);
-
-    return () => {
-      document.body.removeChild(script1);
-      document.body.removeChild(script2);
-    };
-  }, []);
-
+export default function Sidenav() {
   return (
-    <div>
-      <nav className="navbar-default" role="navigation">
-        <div className="sidebar-collapse">
-          <ul className="nav" id="main-menu">
-            <li className="active-link">
-              <NavLink className="nav-link ml-2" to="/">
-                <MdDashboard />
-                Home
-              </NavLink>
-            </li>
+    <div style={{position: 'fixed',
+      height:"100%",
+      overflowY: 'auto',
+      zIndex:"1000"}}>
+      <div
+        className="d-flex z-5 flex-column flex-shrink-0 p-3 text-white bg-dark"
+        style={{ width: "280px", height: "585px" }}
+      >
+        <a
+          href="/"
+          className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+        >
+          <svg className="bi me-2" width="40" height="32">
+            <use xlinkHref="#bootstrap"></use>
+          </svg>
+          <span className="fs-4">CampusConnect</span>
+        </a>
+        <hr />
+        <ul className="nav nav-pills flex-column mb-auto">
+          <li className="nav-item">
+            <a href="/" className="nav-link active" aria-current="page">
+              <MdDashboard className="bi me-2" width="16" height="16" />
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/bike_buddy" className="nav-link text-white">
+              <MdDirectionsBike className="bi me-2" width="16" height="16" />
+              Bike Buddy
+            </a>
+          </li>
+          <li>
+            <a href="/study_options" className="nav-link text-white">
+              <MdEventAvailable className="bi me-2" width="16" height="16" />
+              Event Management
+            </a>
+          </li>
+          <li>
+            <a href="/buy_sell" className="nav-link text-white">
+              <GiBuyCard className="bi me-2" width="16" height="16" />
+              Trade Old Equipment
+            </a>
+          </li>
+          <li>
+            <a href="/roommate" className="nav-link text-white">
+              <IoBed className="bi me-2" width="16" height="16" />
+              Room Sharing
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard" className="nav-link text-white">
+              <MdForum className="bi me-2" width="16" height="16" />
+              Forum
+            </a>
+          </li>
+          <li>
+            <a href="/users/logout" className="nav-link text-white">
+              <IoLogOut className="bi me-2" width="16" height="16" />
+              Logout
+            </a>
+          </li>
+        </ul>
+        <hr />
+        <div className="dropdown">
+          <a
+            href="#"
+            className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+            id="dropdownUser1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://github.com/mdo.png"
+              alt=""
+              width="32"
+              height="32"
+              className="rounded-circle me-2"
+            />
+            <strong>mdo</strong>
+          </a>
+          <ul
+            className="dropdown-menu dropdown-menu-dark text-small shadow"
+            aria-labelledby="dropdownUser1"
+          >
             <li>
-              <NavLink className="nav-link ml-2" to="/bike_buddy">
-                <MdDirectionsBike />
-                Bike Buddy
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="nav-link ml-2" to="/study_options">
-                <MdEventAvailable />
-                Event Management
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="nav-link ml-2" to="/buy_sell">
-                <GiBuyCard />
-                Trade Old Equipment
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className="nav-link ml-2" to="/roommate">
-                <IoBed />
-                Room Sharing
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link ml-2" to="/dashboard">
-                <MdForum />
-                Forum
-              </NavLink>
-            </li>
-            <li>
-              <a href="/users/logout">
-                <IoLogOut />
-                Logout
+              <a className="dropdown-item" href="#">
+                New project...
               </a>
             </li>
-            {/* Add other list items as needed */}
+            <li>
+              <a className="dropdown-item" href="#">
+                Settings
+              </a>
+            </li>
+            <li>
+              <a className="dropdown-item" href="#">
+                Profile
+              </a>
+            </li>
+            <li>
+              <hr className="dropdown-divider" />
+            </li>
+            <li>
+              <a className="dropdown-item" href="#">
+                Sign out
+              </a>
+            </li>
           </ul>
         </div>
-      </nav>
+      </div>
     </div>
   );
-};
-
-export default DashNav;
+}

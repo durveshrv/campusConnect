@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Malelogo from '../assets/img/male.png';
 import Femalelogo from '../assets/img/female.png';
 import ThirdGenderLogo from '../assets/img/thirdgender.png';
-import '../assets/css/biker-card.css';
+import "../assets/css/biker-card.css"
 
 const BikerCard = ({ biker }) => {
   const { _id, bikeno, phoneno, licensecheck, helmetcheck, location, department, year } = biker;

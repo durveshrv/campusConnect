@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import DashNav from "../components/DashNav";
 
 const Studyoption = () => {
   return (
-    <div>
-      <div id="wrapper">
-        <DashNav/>
+    <div style={{display:"flex"}}>
+      {/* <DashNav /> */}
+      <div id="wrapper" className="bg-gray-100 w-full min-h-screen">
         {/* /. NAV SIDE */}
         <div id="page-wrapper">
           <div id="page-inner">
@@ -15,20 +15,24 @@ const Studyoption = () => {
               <div className="col-lg-12 "></div>
             </div>
             {/* /. ROW */}
-            <div className="row text-center pad-top">
-              <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div className="row m-5 text-center mt-10 p-5">
+              <div className="col-lg-6">
                 <div className="div-square">
                   <a href="/studyinput">
-                    <i className=" fa fa-solid fa-book  fa-4x"></i>
-                    <h5 style={{ color: 'black', textDecoration: 'none' }}>Do you want to take a lecture?</h5>
+                    <div className="card mx-5 border border-gray-300 rounded-lg h-100 shadow-lg p-4">
+                      <i className=" fa fa-solid fa-book  fa-4x"></i>
+                      <h5 className="text-black mt-2">Do you want to take a lecture?</h5>
+                    </div>
                   </a>
                 </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div className="col-lg-6">
                 <div className="div-square">
                   <a href="/studyout">
-                    <i className="fa fa-solid fa-users fa-4x"></i>
-                    <h5 style={{ color: 'black', textDecoration: 'none' }}>Do you want to join the lecture?</h5>
+                    <div className="card border mx-5 border-gray-300 h-100 rounded-lg shadow-lg p-4">
+                      <i className="fa fa-solid fa-users fa-4x"></i>
+                      <h5 className="text-black mt-2">Do you want to join the lecture?</h5>
+                    </div>
                   </a>
                 </div>
               </div>
@@ -36,14 +40,6 @@ const Studyoption = () => {
           </div>
         </div>
       </div>
-      {/* /. WRAPPER */}
-      {/* SCRIPTS -AT THE BOTTOM TO REDUCE THE LOAD TIME*/}
-      {/* JQUERY SCRIPTS */}
-      <script src="assets/js/jquery-1.10.2.js"></script>
-      {/* BOOTSTRAP SCRIPTS */}
-      <script src="assets/js/bootstrap.min.js"></script>
-      {/* CUSTOM SCRIPTS */}
-      <script src="assets/js/custom.js"></script>
     </div>
   );
 };

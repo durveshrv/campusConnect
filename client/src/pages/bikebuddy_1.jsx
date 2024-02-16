@@ -5,8 +5,8 @@ import axios from "axios";
 import { MdDirectionsBike } from "react-icons/md";
 import { Redirect } from "react-router-dom"; // Import Redirect from react-router-dom
 import DashNav from "../components/DashNav";
-import BikerCard from '../components/BikerCard';
-import SearchBar from "../components/SearchBar"
+import BikerCard from "../components/BikerCard";
+import SearchBar from "../components/SearchBar";
 
 function Bkbud() {
   const [location, setLocation] = useState("Chintamaninagar2");
@@ -17,16 +17,16 @@ function Bkbud() {
   // Remove navigate
   const callAboutPage = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/about', {
+      const res = await axios.get("http://localhost:5000/about", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "token": localStorage.getItem("token")
+          token: localStorage.getItem("token"),
         },
         credentials: "include",
       });
       const data = await res.data;
-      if(!data) throw error;
+      if (!data) throw error;
       console.log(data);
     } catch (err) {
       if (err) {
@@ -34,9 +34,9 @@ function Bkbud() {
       }
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     callAboutPage();
-  },[]);
+  }, []);
   // Remove redirectTo function
 
   if (redirectToLogin) {
@@ -47,35 +47,20 @@ function Bkbud() {
   return (
     <div style={{ fontFamily: "Lato, sans-serif", lineHeight: "30px" }}>
       <div id="wrapper">
-        <DashNav />
+        {/* <DashNav /> */}
         <div id="page-wrapper">
           <div id="page-inner">
             <div className="row"></div>
             <div className="row">
               <div className="col-lg-12 "></div>
             </div>
-            <div className="row text-center pad-top">
-              <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <div className="div-square">
-                  <a href="/have_bike">
-                    <MdDirectionsBike size={64} />
-                    <h5 style={{ color: "black", textDecoration: "none" }}>
-                      Do you have a bike?
-                    </h5>
-                  </a>
-                </div>
-              </div>
-            </div>
             <div className="row">
               <div className="col-lg-12">{/* <SearchBar/> */}</div>
             </div>
-            <SearchBar/>
+            <SearchBar />
           </div>
         </div>
       </div>
-      <script src="assets/js/jquery-1.10.2.js"></script>
-      <script src="assets/js/bootstrap.min.js"></script>
-      <script src="assets/js/custom.js"></script>
     </div>
   );
 }

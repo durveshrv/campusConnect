@@ -1,6 +1,7 @@
 .product-card {
-    width: 350px;
+    width: 300px;
     position: flex;
+    border-radius: 50px;
     box-shadow: 0 2px 7px #dfdfdf;
     margin: 8px ;
     background: #fafafa;

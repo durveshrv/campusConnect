@@ -1,4 +1,3 @@
-import "../assets/css/SearchBar.css";
 import { FaSearch } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -42,28 +41,33 @@ const SearchBar = () => {
 
   return (
     <>
-      <div className="search-container">
-        <input id="search-bar" style={{ width: "200px" }} type="text" onChange={(e) => setLocation(e.target.value)} value={location} placeholder="Search..." />
-        <div className="search-icon" onClick={handleSubmit} style={{ cursor: "pointer" }}>
-          <FaSearch size={24} />
+      <form class="d-flex w-25 mx-auto m-4">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => setLocation(e.target.value)} 
+          value={location}/>
+        <div className="dropdown">
+          <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button className="btn btn-outline-success">Filter</button>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item"onClick={() => handleOptionClick("All")}>All</a></li>
+            <li><a class="dropdown-item"onClick={() => handleOptionClick("Bibwewadi")}>Bibwewadi</a></li>
+            <li><a class="dropdown-item"onClick={() => handleOptionClick("Katraj")}>Katraj</a></li>
+            <li><a class="dropdown-item"onClick={() => handleOptionClick("Vishrantwadi")}>Vishrantwadi</a></li>
+            <li><a class="dropdown-item"onClick={() => handleOptionClick("Hadapsar")}>Hadapsar</a></li>
+            <li><a class="dropdown-item"onClick={() => handleOptionClick("Pimpri Chinchwad")}>Pimpri Chichwad</a></li>
+          </ul>
         </div>
-        <div className="filter-container">
-          <button className="filter-button" onClick={() => setOpt(!options)}>
-            Filter
-          </button>
-          {options && (
-            <div className="filter-options-container show">
-              <button onClick={() => handleOptionClick("All")}>All</button>
-              <button onClick={() => handleOptionClick("Bibwewadi")}>Bibwewadi</button>
-              <button onClick={() => handleOptionClick("Katraj")}>Katraj</button>
-              <button onClick={() => handleOptionClick("Vishrantwadi")}>Vishrantwadi</button>
-              <button onClick={() => handleOptionClick("Hadapsar")}>Hadapsar</button>
-              <button onClick={() => handleOptionClick("Pimpri Chinchwad")}>Pimpri Chichwad</button>
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="row" style={{ marginLeft: '300px', width: '100%' }}>
+      </form>
+      {options && (
+      <div className="absolute mt-2 w-64 rounded-lg bg-white shadow-md z-10">
+        <button className="block w-full py-2 px-4 text-left hover:bg-gray-100" onClick={() => handleOptionClick("All")}>All</button>
+        <button className="block w-full py-2 px-4 text-left hover:bg-gray-100" onClick={() => handleOptionClick("Bibwewadi")}>Bibwewadi</button>
+        <button className="block w-full py-2 px-4 text-left hover:bg-gray-100" onClick={() => handleOptionClick("Katraj")}>Katraj</button>
+        <button className="block w-full py-2 px-4 text-left hover:bg-gray-100" onClick={() => handleOptionClick("Vishrantwadi")}>Vishrantwadi</button>
+        <button className="block w-full py-2 px-4 text-left hover:bg-gray-100" onClick={() => handleOptionClick("Hadapsar")}>Hadapsar</button>
+        <button className="block w-full py-2 px-4 text-left hover:bg-gray-100" onClick={() => handleOptionClick("Pimpri Chinchwad")}>Pimpri Chichwad</button>
+      </div>)}
+      <div className="grid grid-cols-3 gap-4 mx-auto">
         {bikers.map((biker) => (
           <BikerCard
             key={biker.id} // Add a unique key prop

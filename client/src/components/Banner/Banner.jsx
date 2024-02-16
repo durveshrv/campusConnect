@@ -1,19 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import './Banner.css';
-import Arrow from '../../Asset/Arrow'
+import Arrow from '../../Asset/Arrow';
 import axios from '../../axios';
 import { AuthContext } from '../../Store/Context';
 
 function Banner() {
-  const [categy, setCategy] = useState([])
-  const{setCategory}=useContext(AuthContext)
+  const [categories, setCategories] = useState([]);
+  const { setCategory } = useContext(AuthContext);
+
   useEffect(() => {
     axios.get('/getCategory')
       .then((response) => {
         if (response.data && response.data.categories && response.data.categories.length > 0) {
-          console.log(response.data.categories[0]._id);
-          setCategy(response.data.categories);
-          setCategory(response.data.categories[0]._id); // Set a default category, modify as needed
+          setCategories(response.data.categories);
+          // Set the category to 'ALL' initially
+          setCategory('');
         } else {
           console.error("Categories data is missing or empty.");
         }
@@ -21,39 +22,26 @@ function Banner() {
       .catch((error) => {
         console.error("Error fetching categories:", error);
       });
-  }, []);
+  }, [setCategory]);
+
   return (
     <div className="bannerParentDiv">
       <div className="bannerChildDiv">
         <div className="menuBar">
           <div className="categoryMenu">
-            
             <div>
-              
-            <select onClick={(event)=>{setCategory(event.target.value);
-            axios.get('/getProduct')
-            }}>
-                 <option selected  disabled hidden >ALL CATEGORIES</option>
-                 <option    value=''  >ALL</option>
-                 {categy.map((items,index)=>{
-               return (
-                 <option value={items._id}>{items._id}</option>
-                 );
-              })}
-            </select>
-               
+              <select onChange={(event) => { setCategory(event.target.value); }}>
+                <option value="">ALL</option>
+                {categories.map((category) => (
+                  <option key={category._id} value={category._id}>{category._id}</option>
+                ))}
+              </select>
             </div>
           </div>
-          <div  className="otherQuickOptions">
-            {
-            categy.map((items)=>{
-              return(
-
-                <span>{items._id}</span>
-              )
-            })
-            }
-          
+          <div className="otherQuickOptions">
+            {categories.map((category) => (
+              <span key={category._id}>{category._id}</span>
+            ))}
           </div>
         </div>
         <div className="banner">
@@ -63,9 +51,8 @@ function Banner() {
           />
         </div>
       </div>
-      
     </div>
-  )
+  );
 }
 
-export default Banner
+export default Banner;

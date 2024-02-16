@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from 'react';
-import '../assets/css/RoomCard.css'; // Import the CSS file
+import React, { useState,useEffect } from 'react'; // Import the CSS file
+import "../assets/css/RoomCard.css"
 const RoomCard = ({ room }) => {
   const { hostel_name, address, phoneno, department, year, room_type, image } = room;
   const [showDetails, setShowDetails] = useState(false);
@@ -20,9 +20,9 @@ const RoomCard = ({ room }) => {
     }
   };
   return (
-    <section style={{marginLeft:"260px"}} className="w-75 text-gray-600 body-font overflow-hidden">
+    <section className="w-100 m-5 text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-24 mx-auto flex items-start card-container">
-        <div className={`lg:w-1/2 w-25 lg:pr-10 lg:py-6 mb-6 lg:mb-0 ${showDetails ? 'details-show' : ''}`}>
+        <div className={`lg:w-1/2 w-50 lg:pr-10 lg:py-6 mb-6 lg:mb-0 ${showDetails ? 'details-show' : ''}`}>
           <h1 className="text-sm font-weight-bold title-font text-gray-500 tracking-widest font-bold">{hostel_name}</h1>
           <h3 className="text-gray-900 text-3xl title-font font-medium mb-4">{address}</h3>
           <p className={`leading-relaxed mb-4 ${showDetails ? 'block' : 'hidden'}`}>
@@ -61,7 +61,7 @@ const RoomCard = ({ room }) => {
             </button>
           </div>
         </div>
-        <img alt="ecommerce" style={{width:"200px"}} className="lg:w-1/2 mx-5 h-64 object-cover object-center rounded" src={`http://localhost:5000/uploads/` + image} />
+        <img alt="ecommerce" style={{width:"280px"}} className="lg:w-1/2 mx-5 h-64 object-cover object-center rounded" src={`http://localhost:5000/uploads/` + image} />
       </div>
     </section>
   );

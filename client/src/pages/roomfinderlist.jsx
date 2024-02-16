@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import RoomCard from '../components/RoomCard';
-import DashNav from '../components/DashNav';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import RoomCard from "../components/RoomCard";
+import DashNav from "../components/DashNav";
 const Roomfinder = () => {
   const [rooms, setRooms] = useState([]); // Change here to initialize bikers as an array
   const fetchData = async () => {
@@ -19,14 +19,14 @@ const Roomfinder = () => {
   }, []);
 
   return (
-    <>
-    <DashNav/>
-    {rooms.map((room) => (
-      <RoomCard
-        room={room}
-      />
-    ))}
-    </>
+    <div style={{display:"flex"}}>
+      {/* <DashNav /> */}
+      <div className="wrapper">
+        {rooms.map((room) => (
+          <RoomCard room={room} />
+        ))}
+      </div>
+    </div>
   );
 };
 

@@ -1,9 +1,4 @@
 import React, { useEffect } from "react";
-import "../assets/css/bootstrap.css";
-import "../assets/css/font-awesome.css";
-import "../assets/css/custom.css";
-import "../assets/css/style.css";
-import "../assets/css/utilities.css";
 import { Link } from "react-router-dom";
 // import NavbarSidebar from "../components/Navbar";
 import {

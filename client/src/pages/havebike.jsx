@@ -24,7 +24,7 @@ function HaveBike() {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            "token": localStorage.getItem("token"),
+            token: localStorage.getItem("token"),
           },
           credentials: "include",
         });
@@ -107,141 +107,125 @@ function HaveBike() {
   }
 
   return (
-    <div>
-      <div id="wrapper">
-        <DashNav />
-        <div id="page-wrapper">
-          <div id="page-inner">
-            <div className="row"></div>
-            <div className="row">
-              <div className="col-lg-12 "></div>
-            </div>
-            <div className="content">
-              <h3>Hello, Enter Information</h3>
-              <form onSubmit={Submit}>
-                <div className="user-details">
-                  {/* ... (unchanged) ... */}
-                  <div className="input-box">
-                    <span className="details">Vehicle No.</span>
-                    <input
-                      type="varchar"
-                      name="bikeno"
-                      placeholder="ST00VR2022"
-                      onChange={(e) => setBike(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="input-box">
-                    <input
-                      type="text"
-                      name="phoneno"
-                      placeholder="Phone Number"
-                      onChange={(e) => setPhoneno(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="checkbox-wrapper-19">
-                    <input
-                      type="checkbox"
-                      id="cbtest-19"
-                      name="licensecheck"
-                      onChange={() => setLicense(!licensecheck)}
-                      checked={licensecheck}
-                      required
-                    />
-                    <span>I have Driver's License</span>&emsp;
-                    <input
-                      type="checkbox"
-                      id="cbtest-20"
-                      name="helmetcheck"
-                      onChange={() => setHelmet(!helmetcheck)}
-                      checked={helmetcheck}
-                    />
-                    <span>Extra Helmet</span>
-                  </div>
-                  <div className="input-box">
-                    <span className="details">Location</span>
-                    <select
-                      name="location"
-                      className="box"
-                      onChange={(e) => setLocation(e.target.value)}
-                      required>
-                      <option value="Bibwewadi" name="Bibwewadi">
-                        Bibwewadi
-                      </option>
-                      <option value="Katraj" name="Katraj">
-                        Katraj
-                      </option>
-                      <option value="Vishrantwadi" name="Vishrantwadi">
-                        Vishrantwadi
-                      </option>
-                      <option value="Hadapsar" name="Hadapsar">
-                        Hadapsar
-                      </option>
-                      <option value="Pimpri Chinchwad" name="Pimpri Chinchwad">
-                        Pimpri Chinchwad
-                      </option>
-                    </select>
-                  </div>
-                  <div className="input-box">
-                    <span className="details">Department</span>
-                    <select
-                      name="department"
-                      className="box"
-                      onChange={(e) => setDept(e.target.value)}
-                      required>
-                      <option value="CS" name="CS">
-                        CS
-                      </option>
-                      <option value="IT" name="IT">
-                        IT
-                      </option>
-                      <option value="ENTC" name="ENTC">
-                        ENTC
-                      </option>
-                      <option value="AIDS" name="AIDS">
-                        AIDS
-                      </option>
-                      <option value="EC" name="EC">
-                        EC
-                      </option>
-                    </select>
-                  </div>
-                  <div className="input-box">
-                    <span className="details">Year</span>
-                    <select
-                      name="year"
-                      className="box"
-                      onChange={(e) => setYear(e.target.value)}
-                      required>
-                      <option value="FE" name="FE">
-                        FE
-                      </option>
-                      <option value="SE" name="SE">
-                        SE
-                      </option>
-                      <option value="TE" name="TE">
-                        TE
-                      </option>
-                      <option value="BE" name="BE">
-                        BE
-                      </option>
-                    </select>
-                  </div>
-                </div>
-                <div className="button">
-                  <input
-                    type="submit"
-                    name="getp"
-                    value="Get your Bike Partner"
-                  />
-                </div>
-              </form>
-            </div>
+    <div style={{display:"flex"}}>
+      <DashNav/>
+    <div className="container mx-auto p-5" style={{width:"500px"}}>
+      <div className="bg-gray-100 rounded-lg p-6">
+        <h3 className="text-lg font-bold mb-4">Hello, Enter Information</h3>
+        <form onSubmit={Submit} style={{}}>
+          <div className="mb-3">
+            <label htmlFor="bikeno" className="form-label">
+              Vehicle No.
+            </label>
+            <input
+              type="text"
+              name="bikeno"
+              id="bikeno"
+              placeholder="ST00VR2022"
+              className="form-control"
+              onChange={(e) => setBike(e.target.value)}
+              required
+            />
           </div>
-        </div>
+          <div className="mb-3">
+            <label htmlFor="phoneno" className="form-label">
+              Phone Number
+            </label>
+            <input
+              type="text"
+              name="phoneno"
+              id="phoneno"
+              placeholder="Phone Number"
+              className="form-control"
+              onChange={(e) => setPhoneno(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3 form-check">
+            <input
+              type="checkbox"
+              id="licensecheck"
+              name="licensecheck"
+              className="form-check-input"
+              onChange={() => setLicense(!licensecheck)}
+              checked={licensecheck}
+              required
+            />
+            <label className="form-check-label" htmlFor="licensecheck">
+              I have Driver's License
+            </label><br/>
+            <input
+              type="checkbox"
+              id="helmetcheck"
+              name="helmetcheck"
+              className="form-check-input"
+              onChange={() => setHelmet(!helmetcheck)}
+              checked={helmetcheck}
+            />
+            <label className="form-check-label" htmlFor="helmetcheck">
+              Extra Helmet
+            </label>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="location" className="form-label">
+              Location
+            </label>
+            <select
+              name="location"
+              id="location"
+              className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+              onChange={(e) => setLocation(e.target.value)}
+              required
+            >
+              <option value="Bibwewadi">Bibwewadi</option>
+              <option value="Katraj">Katraj</option>
+              <option value="Vishrantwadi">Vishrantwadi</option>
+              <option value="Hadapsar">Hadapsar</option>
+              <option value="Pimpri Chinchwad">Pimpri Chinchwad</option>
+            </select>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="department" className="form-label">
+              Department
+            </label>
+            <select
+              name="department"
+              id="department"
+              className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+              onChange={(e) => setDept(e.target.value)}
+              required
+            >
+              <option value="CS">CS</option>
+              <option value="IT">IT</option>
+              <option value="ENTC">ENTC</option>
+              <option value="AIDS">AIDS</option>
+              <option value="EC">EC</option>
+            </select>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="year" className="form-label">
+              Year
+            </label>
+            <select
+              name="year"
+              id="year"
+              className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+              onChange={(e) => setYear(e.target.value)}
+              required
+            >
+              <option value="FE">FE</option>
+              <option value="SE">SE</option>
+              <option value="TE">TE</option>
+              <option value="BE">BE</option>
+            </select>
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Get your Bike Partner
+          </button>
+        </form>
       </div>
       <ToastContainer />
+    </div>
     </div>
   );
 }

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import DashNav from '../components/DashNav';
+import React, { useState, useEffect } from "react";
+import DashNav from "../components/DashNav";
 
 const Index = () => {
   const [commentId, setCommentId] = useState(0);
-  const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
   const [questions, setQuestions] = useState([]);
 
   const handleReply = () => {
@@ -25,8 +25,8 @@ const Index = () => {
 
       // Example data (replace with actual data from your server)
       const data = [
-        { id: 1, name: 'User1', message: 'Question 1' },
-        { id: 2, name: 'User2', message: 'Question 2' },
+        { id: 1, name: "User1", message: "Question 1" },
+        { id: 2, name: "User2", message: "Question 2" },
         // Add more questions as needed
       ];
 
@@ -39,7 +39,7 @@ const Index = () => {
   return (
     <div>
       <div id="wrapper">
-        <DashNav/>
+        <DashNav />
         {/* /. NAV SIDE */}
         <div id="page-wrapper">
           <div id="page-inner">
@@ -48,7 +48,13 @@ const Index = () => {
               <div className="modal-dialog">
                 <div className="modal-content">
                   <div className="modal-header">
-                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="modal"
+                    >
+                      &times;
+                    </button>
                     <h4 className="modal-title">Reply Question</h4>
                   </div>
                   <div className="modal-body">
@@ -90,12 +96,17 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="panel panel-default" style={{ marginTop: '50px' }}>
+            <div className="panel panel-default" style={{ marginTop: "50px" }}>
               <div className="panel-body">
                 <h3>Community forum</h3>
                 <hr />
                 <form name="frm" method="post">
-                  <input type="hidden" id="commentid" name="Pcommentid" value={commentId} />
+                  <input
+                    type="hidden"
+                    id="commentid"
+                    name="Pcommentid"
+                    value={commentId}
+                  />
                   <div className="form-group">
                     <label htmlFor="usr">Write your name:</label>
                     <input
@@ -133,7 +144,15 @@ const Index = () => {
             <div className="panel panel-default">
               <div className="panel-body">
                 <h4>Recent questions</h4>
-                <table className="table" id="MyTable" style={{ backgroundColor: '#edfafa', border: '0px', borderRadius: '10px' }}>
+                <table
+                  className="table"
+                  id="MyTable"
+                  style={{
+                    backgroundColor: "#edfafa",
+                    border: "0px",
+                    borderRadius: "10px",
+                  }}
+                >
                   <tbody id="record">
                     {/* Render the questions from the state */}
                     {questions.map((question) => (

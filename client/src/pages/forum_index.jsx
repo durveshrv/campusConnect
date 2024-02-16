@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import NavbarSidebar from '../components/Navbar';
 
 const Forumindex = () => {
   // Assuming you have the equivalent of 'require("inc/db.php");' somewhere else in your React setup

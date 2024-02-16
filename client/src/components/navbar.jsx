@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import DashNav from "./DashNav";
 import { FaHamburger } from "react-icons/fa";
-import { Link as LinkIcon } from "react-bootstrap-icons";
-import { Redirect } from "react-router-dom/cjs/react-router-dom";
+import { AuthContext } from "../Store/Context";
+import { MdDirectionsBike } from "react-icons/md";
 
-const NavBar = ({ user, isSellButtonVisible, history }) => {
+const NavBar = ({ user, history }) => {
+  const { isSellButtonVisible, setIsSellButtonVisible } =
+    useContext(AuthContext);
+  const { havebikebtn } = useContext(AuthContext);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -13,34 +16,45 @@ const NavBar = ({ user, isSellButtonVisible, history }) => {
   };
 
   const sellClick = () => {
-    // Use the history object for programmatic redirect
     history.push("/sell");
   };
 
   return (
     <div>
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <nav className="sticky navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         {/* Hamburger Icon */}
         <FaHamburger
           onClick={toggleSidebar}
-          style={{
-            fontSize: "2rem",
-            color: "#ffffff",
-            cursor: "pointer",
-          }}
+          className="text-white text-2xl cursor-pointer"
         />
-        <NavLink className="mt-3 navbar-brand" to="/">
+        <NavLink className="navbar-brand" to="/">
           campusConnect
         </NavLink>
-
-        <div className={`collapse navbar-collapse row ${isSidebarOpen ? "show" : ""}`} id="navbarColor03">
+        
+        <div
+          className={`collapse navbar-collapse row ${
+            isSidebarOpen ? "show" : ""
+          }`}
+          id="navbarColor03"
+        >
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <NavLink className="nav-link ml-3" to="/">
                 Home
               </NavLink>
             </li>
+            {havebikebtn && (
+              <li className="nav-item active">
+                <NavLink
+                  className="nav-link ml-3 flex items-center"
+                  to="/have_bike"
+                >
+                  Do you have bike?
+                  <MdDirectionsBike className="ml-1" size={20} />
+                </NavLink>
+              </li>
+            )}
           </ul>
           <ul className="nav navbar-nav navbar-right">
             {!user && (
@@ -74,15 +88,17 @@ const NavBar = ({ user, isSellButtonVisible, history }) => {
             )}
 
             {/* Move the Sell button to the right */}
-            <li className="nav-item ml-auto">
-              <button
-                type="button"
-                className={`btn btn-primary mx-4 mt-3 ${isSellButtonVisible ? "visible" : "invisible"}`}
-                onClick={sellClick}
-              >
-                Sell
-              </button>
-            </li>
+            {isSellButtonVisible && (
+              <li className="nav-item ml-auto">
+                <button
+                  type="button"
+                  className="btn btn-primary mx-4 "
+                  onClick={sellClick}
+                >
+                  Sell
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </nav>

@@ -1,8 +1,8 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext} from "react";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min.js";
 import jwtDecode from "jwt-decode";
 import { Route, Switch, Redirect } from "react-router-dom";
-
 import http from "./services/httpService";
 import { api } from "./config.js";
 import Dashboard from "./components/dashboard";
@@ -29,10 +29,12 @@ import Roomfinder from "./pages/roomfinderlist.jsx";
 import Buy_sell from "./pages/buy_sell.jsx";
 import ViewPost from "./pages/Viewpost.jsx";
 import CreatePage from "./pages/Create.jsx";
-
+import { AuthContext } from "./Store/Context.jsx";
 const App = () => {
   const [user, setUser] = useState(null);
-  const [isSellButtonVisible, setIsSellButtonVisible] = useState(false);
+  const {setIsSellButtonVisible } = useContext(AuthContext); // Access AuthContext values
+  const {sethavebikebtnvisible}=useContext(AuthContext);
+  const location = useLocation();
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -47,10 +49,15 @@ const App = () => {
 
     fetchUser();
   }, []);
+  useEffect(() => {
+    const path = location.pathname;
+    setIsSellButtonVisible(path === "/sell" || path === "/view/:id" || path === "/buy_sell");
+    sethavebikebtnvisible(path === "/bike_buddy" || path === "/have_bike")
+  }, [location, setIsSellButtonVisible]);
 
   return (
     <div>
-      <NavBar user={user} isSellButtonVisible={isSellButtonVisible}/>
+      <NavBar user={user}/>
       <Switch>
         <Route path="/users/login" component={Log} />
         <Route path="/users/register" component={Register} />
@@ -90,6 +97,7 @@ const App = () => {
         <Redirect to="/not-found" />
       </Switch>
     </div>
+    
   );
 };
 

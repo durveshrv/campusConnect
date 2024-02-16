@@ -1,11 +1,9 @@
 import React from 'react';
-import NavbarSidebar from '../components/Navbar';
 
 const Additem = () => {
   return (
     <div>
       <div id="wrapper">
-        <NavbarSidebar/>
         {/* /. NAV SIDE */}
         {/* Modal */}
         <div id="page-wrapper">

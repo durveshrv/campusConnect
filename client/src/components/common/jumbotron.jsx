@@ -1,11 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/home.css";
-// import "../../assets/css/bootstrap.css";
-import "../../assets/css/font-awesome.css";
-import "../../assets/css/custom.css";
-import "../../assets/css/style.css";
-// import "../../assets/css/utilities.css";
 import {
   MdDashboard,
   MdDirectionsBike,
@@ -14,86 +8,72 @@ import {
 } from "react-icons/md";
 import { IoBed, IoLogOut } from "react-icons/io5";
 import { GiBuyCard } from "react-icons/gi";
-import DashNav from "../../components/DashNav";
+import DashNav from "../DashNav";
+import { AuthContext } from "../../Store/Context";
 
-
-const Jumotron = ({setIsSellButtonVisible}) => {
+const Jumotron = () => {
+  const { setIsSellButtonVisible } = useContext(AuthContext);
   
   return (
-    <div >
-      <div>
-        <div id="wrapper">
-          <DashNav />
-          {/* /. NAV SIDE  */}
-          <div id="page-wrapper">
-            <div id="page-inner">
-              {/* /. ROW  */}
-              <div className="">
-                <div className="col-lg-12">
-                  <div className="alert alert-info">
-                    <strong>Welcome To campusConnect</strong>
-                  </div>
+    <div style={{ display: "flex"}}>
+      {/* DashNav on the left */}
+      {/* <DashNav /> */}
+      <div id="wrapper" style={{width:"100%"}}>
+        {/* /. NAV SIDE */}
+        <div id="page-wrapper">
+          <div id="page-inner">
+            {/* /. ROW */}
+            <div className="p-3">
+                <div className="alert alert-info">
+                  <strong>Welcome To campusConnect</strong>
+                </div>
+            </div>
+            {/* /. ROW */}
+            <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="col-span-1">
+                <div className="card rounded shadow-lg p-4" style={{height:"170px"}}>
+                  <Link to="bike_buddy" className="card-body flex flex-col items-center">
+                    <MdDirectionsBike size={48} style={{textAlign:"center"}} />
+                    <h5 className="card-title mt-2">Bike Buddy</h5>
+                  </Link>
                 </div>
               </div>
-              {/* /. ROW  */}
-              <div className="row text-center pad-top">
-                <div className="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                  <div className="div-square">
-                    <a href="bike_buddy">
-                      <MdDirectionsBike size={64} />
-                      <h5 style={{ color: "black", textDecoration: "none" }}>
-                        Bike Buddy
-                      </h5>
-                    </a>
-                  </div>
+              <div className="col-span-1">
+                <div className="card rounded shadow-lg p-4" style={{height:"170px"}}>
+                  <Link to="/studyout" className="card-body flex flex-col items-center">
+                    <MdEventAvailable size={48} />
+                    <h5 className="card-title mt-2">Study</h5>
+                  </Link>
                 </div>
-                <div className="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                  <div className="div-square">
-                    <a href="/studyout">
-                      <MdEventAvailable size={64} />
-                      <h5 style={{ color: "black", textDecoration: "none" }}>
-                        Study
-                      </h5>
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                  <div className="div-square">
-                    <Link to="/buy_sell" onClick={()=>{
+              </div>
+              <div className="col-span-1">
+                <div className="card rounded shadow-lg p-4" style={{height:"170px"}}>
+                  <Link
+                    to="/buy_sell"
+                    className="card-body flex flex-col items-center"
+                    onClick={() => {
                       setIsSellButtonVisible(true);
-                    }}>
-                      <GiBuyCard size={64} />
-                      <h5
-                        style={{ color: "black", textDecoration: "none" }}
-                        alt="room mate icon">
-                        Buy/Sell
-                      </h5>
-                    </Link>
-                  </div>
+                    }}
+                  >
+                    <GiBuyCard size={48} />
+                    <h5 className="card-title mt-2">Buy/Sell</h5>
+                  </Link>
                 </div>
-                <div className="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                  <div className="div-square">
-                    <a href="/roommate">
-                      <IoBed size={64} />
-                      <h5
-                        style={{ color: "black", textDecoration: "none" }}
-                        alt="logout icon">
-                        Room
-                      </h5>
-                    </a>
-                  </div>
+              </div>
+              <div className="col-span-1">
+                <div className="card rounded shadow-lg p-4" style={{height:"170px"}}>
+                  <Link to="/roommate" className="card-body flex flex-col items-center">
+                    <IoBed size={48} />
+                    <h5 className="card-title mt-2">Room</h5>
+                  </Link>
                 </div>
-                <div className="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                  <div className="div-square">
-                    <a href="/index">
-                      <MdForum size={64} />
-                      <h5
-                        style={{ color: "black", textDecoration: "none" }}
-                        alt="room mate icon">
-                        Forum
-                      </h5>
-                    </a>
-                  </div>
+              </div>
+              <div className="col-span-1">
+                <div className="card rounded shadow-lg p-4" style={{height:"170px"}}>
+                  <Link to="/index" className="card-body flex flex-col items-center">
+                    <MdForum size={48} />
+                    <h5 className="card-title mt-2">Forum</h5>
+                  </Link>
                 </div>
               </div>
             </div>
