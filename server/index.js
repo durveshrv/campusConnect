@@ -211,7 +211,10 @@ app.get("/api/users", async (req, res) => {
   }
 });
 const port = process.env.PORT || 4000;
-
+app.use(express.static("../frontend/build"));
+app.get("*",(req,res)=>{
+  res.sendFile(path.resolve(__dirname,"frontend","build","index.html"))
+})
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
 });
