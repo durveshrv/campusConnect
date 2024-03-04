@@ -80,8 +80,7 @@ const Studyinput = () => {
   }
 
   return (
-    <div style={{display:"flex"}}>
-      <DashNav />
+    <div className="flex">
       <div className="container mx-auto p-5" style={{ width: "500px" }}>
         <div className="bg-gray-100 rounded-lg p-6">
           <h3 className="text-lg font-bold mb-4">Hello, Enter Information</h3>

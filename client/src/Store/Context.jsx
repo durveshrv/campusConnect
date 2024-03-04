@@ -9,6 +9,8 @@ export default function Context({ children }) {
   const [refresh, setRefresh] = useState(false);
   const [isSellButtonVisible, setIsSellButtonVisible] = useState(false); // Add state for Sell button visibility
   const [havebikebtn, sethavebikebtnvisible] = useState(false);
+  const [haveeventbtn, sethaveeventbtnvisible] = useState(false);
+  const [haveroombtn, sethaveroombtnvisible] = useState(false);
   return (
     <AuthContext.Provider
       value={{
@@ -23,7 +25,11 @@ export default function Context({ children }) {
         isSellButtonVisible, // Provide state for Sell button visibility
         setIsSellButtonVisible,
         havebikebtn,
-        sethavebikebtnvisible 
+        haveeventbtn,
+        sethavebikebtnvisible,
+        sethaveeventbtnvisible,
+        haveroombtn,
+        sethaveroombtnvisible
       }}
     >
       {children}

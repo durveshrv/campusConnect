@@ -41,7 +41,7 @@ export default function Sidenav() {
             </a>
           </li>
           <li>
-            <a href="/study_options" className="nav-link text-white">
+            <a href="/studyout" className="nav-link text-white">
               <MdEventAvailable className="bi me-2" width="16" height="16" />
               Event Management
             </a>
@@ -53,7 +53,7 @@ export default function Sidenav() {
             </a>
           </li>
           <li>
-            <a href="/roommate" className="nav-link text-white">
+            <a href="/roomfinderlist" className="nav-link text-white">
               <IoBed className="bi me-2" width="16" height="16" />
               Room Sharing
             </a>

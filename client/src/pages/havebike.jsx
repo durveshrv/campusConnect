@@ -13,6 +13,7 @@ function HaveBike() {
   const [location, setLocation] = useState("Bibwewadi");
   const [department, setDept] = useState("");
   const [year, setYear] = useState("");
+  const [image, setImage] = useState("");
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
@@ -49,24 +50,19 @@ function HaveBike() {
 
   const Submit = async (e) => {
     e.preventDefault();
-
+    const formData = new FormData();
+    formData.append("bikeno", bikeno);
+    formData.append("phoneno", phoneno);
+    formData.append("licensecheck", licensecheck);
+    formData.append("helmetcheck", helmetcheck);
+    formData.append("location", location);
+    formData.append("department", department);
+    formData.append("year", year);
+    formData.append("image", image);
     try {
       const result = await axios.post(
         "http://localhost:5000/biker",
-        {
-          bikeno,
-          phoneno,
-          licensecheck,
-          helmetcheck,
-          location,
-          department,
-          year,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        formData
       );
 
       console.log(result.data);
@@ -105,127 +101,147 @@ function HaveBike() {
   if (redirect) {
     return <Redirect to="/bike_buddy" />;
   }
+  const onInputChange = (e) => {
+    const selectedFile = e.target.files[0];
+    console.log(selectedFile);
+    setImage(selectedFile);
+  };
 
   return (
-    <div style={{display:"flex"}}>
-      <DashNav/>
-    <div className="container mx-auto p-5" style={{width:"500px"}}>
-      <div className="bg-gray-100 rounded-lg p-6">
-        <h3 className="text-lg font-bold mb-4">Hello, Enter Information</h3>
-        <form onSubmit={Submit} style={{}}>
-          <div className="mb-3">
-            <label htmlFor="bikeno" className="form-label">
-              Vehicle No.
-            </label>
-            <input
-              type="text"
-              name="bikeno"
-              id="bikeno"
-              placeholder="ST00VR2022"
-              className="form-control"
-              onChange={(e) => setBike(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="phoneno" className="form-label">
-              Phone Number
-            </label>
-            <input
-              type="text"
-              name="phoneno"
-              id="phoneno"
-              placeholder="Phone Number"
-              className="form-control"
-              onChange={(e) => setPhoneno(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-3 form-check">
-            <input
-              type="checkbox"
-              id="licensecheck"
-              name="licensecheck"
-              className="form-check-input"
-              onChange={() => setLicense(!licensecheck)}
-              checked={licensecheck}
-              required
-            />
-            <label className="form-check-label" htmlFor="licensecheck">
-              I have Driver's License
-            </label><br/>
-            <input
-              type="checkbox"
-              id="helmetcheck"
-              name="helmetcheck"
-              className="form-check-input"
-              onChange={() => setHelmet(!helmetcheck)}
-              checked={helmetcheck}
-            />
-            <label className="form-check-label" htmlFor="helmetcheck">
-              Extra Helmet
-            </label>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="location" className="form-label">
-              Location
-            </label>
-            <select
-              name="location"
-              id="location"
-              className="form-select mx-2 bg-gray-100 rounded-lg p-6"
-              onChange={(e) => setLocation(e.target.value)}
-              required
-            >
-              <option value="Bibwewadi">Bibwewadi</option>
-              <option value="Katraj">Katraj</option>
-              <option value="Vishrantwadi">Vishrantwadi</option>
-              <option value="Hadapsar">Hadapsar</option>
-              <option value="Pimpri Chinchwad">Pimpri Chinchwad</option>
-            </select>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="department" className="form-label">
-              Department
-            </label>
-            <select
-              name="department"
-              id="department"
-              className="form-select mx-2 bg-gray-100 rounded-lg p-6"
-              onChange={(e) => setDept(e.target.value)}
-              required
-            >
-              <option value="CS">CS</option>
-              <option value="IT">IT</option>
-              <option value="ENTC">ENTC</option>
-              <option value="AIDS">AIDS</option>
-              <option value="EC">EC</option>
-            </select>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="year" className="form-label">
-              Year
-            </label>
-            <select
-              name="year"
-              id="year"
-              className="form-select mx-2 bg-gray-100 rounded-lg p-6"
-              onChange={(e) => setYear(e.target.value)}
-              required
-            >
-              <option value="FE">FE</option>
-              <option value="SE">SE</option>
-              <option value="TE">TE</option>
-              <option value="BE">BE</option>
-            </select>
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Get your Bike Partner
-          </button>
-        </form>
+    <div className="flex">
+      <div className="container mx-auto p-5 w-96">
+        <div className="bg-gray-100 rounded-lg p-6">
+          <h3 className="text-lg font-bold mb-4">Hello, Enter Information</h3>
+          <form onSubmit={Submit}>
+            <div className="mb-3">
+              <label htmlFor="bikeno" className="form-label">
+                Vehicle No.
+              </label>
+              <input
+                type="text"
+                name="bikeno"
+                id="bikeno"
+                placeholder="ST00VR2022"
+                className="form-control"
+                onChange={(e) => setBike(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="phoneno" className="form-label">
+                Phone Number
+              </label>
+              <input
+                type="text"
+                name="phoneno"
+                id="phoneno"
+                placeholder="Phone Number"
+                className="form-control"
+                onChange={(e) => setPhoneno(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3 form-check">
+              <input
+                type="checkbox"
+                id="licensecheck"
+                name="licensecheck"
+                className="form-check-input"
+                onChange={() => setLicense(!licensecheck)}
+                checked={licensecheck}
+                required
+              />
+              <label className="form-check-label" htmlFor="licensecheck">
+                I have Driver's License
+              </label>
+              <br />
+              <input
+                type="checkbox"
+                id="helmetcheck"
+                name="helmetcheck"
+                className="form-check-input"
+                onChange={() => setHelmet(!helmetcheck)}
+                checked={helmetcheck}
+              />
+              <label className="form-check-label" htmlFor="helmetcheck">
+                Extra Helmet
+              </label>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="location" className="form-label">
+                Location
+              </label>
+              <select
+                name="location"
+                id="location"
+                className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+                onChange={(e) => setLocation(e.target.value)}
+                required
+              >
+                <option value="Bibwewadi">Bibwewadi</option>
+                <option value="Katraj">Katraj</option>
+                <option value="Vishrantwadi">Vishrantwadi</option>
+                <option value="Hadapsar">Hadapsar</option>
+                <option value="Pimpri Chinchwad">Pimpri Chinchwad</option>
+              </select>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="department" className="form-label">
+                Department
+              </label>
+              <select
+                name="department"
+                id="department"
+                className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+                onChange={(e) => setDept(e.target.value)}
+                required
+              >
+                <option value="CS">CS</option>
+                <option value="IT">IT</option>
+                <option value="ENTC">ENTC</option>
+                <option value="AIDS">AIDS</option>
+                <option value="EC">EC</option>
+              </select>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="year" className="form-label">
+                Year
+              </label>
+              <select
+                name="year"
+                id="year"
+                className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+                onChange={(e) => setYear(e.target.value)}
+                required
+              >
+                <option value="FE">FE</option>
+                <option value="SE">SE</option>
+                <option value="TE">TE</option>
+                <option value="BE">BE</option>
+              </select>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="image" className="form-label">
+                Upload Profile Photo
+              </label>
+              <input
+                type="file"
+                name="image"
+                placeholder="Photos"
+                className="form-input"
+                onChange={onInputChange}
+                required
+                accept="image/*"
+              />
+              {/* {file && <img style={{ width: "50px" }} src={`http://localhost:5000/uploads/` + file} alt="image" />} */}
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Get your Bike Partner
+            </button>
+          </form>
+        </div>
+        <ToastContainer />
       </div>
-      <ToastContainer />
-    </div>
     </div>
   );
 }

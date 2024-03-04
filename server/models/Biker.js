@@ -28,6 +28,10 @@ const bikerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: Object,
+    required: true
+  }
 });
 const Biker = mongoose.model("Biker", bikerSchema);
 

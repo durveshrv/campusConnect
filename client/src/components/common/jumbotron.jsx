@@ -32,15 +32,15 @@ const Jumotron = () => {
             <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               <div className="col-span-1">
                 <div className="card rounded shadow-lg p-4" style={{height:"170px"}}>
-                  <Link to="bike_buddy" className="card-body flex flex-col items-center">
-                    <MdDirectionsBike size={48} style={{textAlign:"center"}} />
+                  <Link to="bike_buddy" className="card-body flex flex-col mx-auto">
+                    <MdDirectionsBike size={48}/>
                     <h5 className="card-title mt-2">Bike Buddy</h5>
                   </Link>
                 </div>
               </div>
               <div className="col-span-1">
                 <div className="card rounded shadow-lg p-4" style={{height:"170px"}}>
-                  <Link to="/studyout" className="card-body flex flex-col items-center">
+                  <Link to="/studyout" className="card-body flex flex-col mx-auto">
                     <MdEventAvailable size={48} />
                     <h5 className="card-title mt-2">Study</h5>
                   </Link>
@@ -50,7 +50,7 @@ const Jumotron = () => {
                 <div className="card rounded shadow-lg p-4" style={{height:"170px"}}>
                   <Link
                     to="/buy_sell"
-                    className="card-body flex flex-col items-center"
+                    className="card-body flex flex-col mx-auto"
                     onClick={() => {
                       setIsSellButtonVisible(true);
                     }}
@@ -62,7 +62,7 @@ const Jumotron = () => {
               </div>
               <div className="col-span-1">
                 <div className="card rounded shadow-lg p-4" style={{height:"170px"}}>
-                  <Link to="/roommate" className="card-body flex flex-col items-center">
+                  <Link to="/roomfinderlist" className="card-body flex flex-col mx-auto">
                     <IoBed size={48} />
                     <h5 className="card-title mt-2">Room</h5>
                   </Link>
@@ -70,7 +70,7 @@ const Jumotron = () => {
               </div>
               <div className="col-span-1">
                 <div className="card rounded shadow-lg p-4" style={{height:"170px"}}>
-                  <Link to="/index" className="card-body flex flex-col items-center">
+                  <Link to="/index" className="card-body flex flex-col mx-auto">
                     <MdForum size={48} />
                     <h5 className="card-title mt-2">Forum</h5>
                   </Link>

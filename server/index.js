@@ -56,14 +56,19 @@ app.use("/users", users);
 app.use("/posts", posts);
 app.use("/tags", tags);
 app.use("/reply", replies);
-app.use("/bikers", bikers);
+// app.use("/bikers", bikers);
 app.use('/',products);
 //adding biker
-app.post("/biker", async (req, res) => {
+app.post("/biker",upload.single("image"), async (req, res) => {
+  console.log("Request File:", req.file);
   console.log("Request Body:", req.body);
-
+  const { bikeno, phoneno,licensecheck,helmetcheck,location, department, year } = req.body;
+  const image = req.file.filename;
   try {
-    const biker = await Biker.create(req.body);
+    const biker = new Biker({
+      bikeno, phoneno,licensecheck,helmetcheck,location, department, year,image,
+    })
+    await biker.save();
     console.log("Biker created:", biker);
     res.status(201).json(biker);
   } catch (err) {

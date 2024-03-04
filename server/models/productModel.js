@@ -33,7 +33,6 @@ const productSchema =mongoose.Schema({
         type: Object,
         required: true
     }
- 
 })
 
 const productModel = mongoose.model("product", productSchema)

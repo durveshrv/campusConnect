@@ -34,6 +34,8 @@ const App = () => {
   const [user, setUser] = useState(null);
   const {setIsSellButtonVisible } = useContext(AuthContext); // Access AuthContext values
   const {sethavebikebtnvisible}=useContext(AuthContext);
+  const {sethaveeventbtnvisible}=useContext(AuthContext);
+  const {sethaveroombtnvisible}=useContext(AuthContext);
   const location = useLocation();
   useEffect(() => {
     const fetchUser = async () => {
@@ -53,6 +55,8 @@ const App = () => {
     const path = location.pathname;
     setIsSellButtonVisible(path === "/sell" || path === "/view/:id" || path === "/buy_sell");
     sethavebikebtnvisible(path === "/bike_buddy" || path === "/have_bike")
+    sethaveeventbtnvisible(path === "/studyout" || path === "/studyinput")
+    sethaveroombtnvisible(path === "/shareroom" || path === "/roomfinderlist")
   }, [location, setIsSellButtonVisible]);
 
   return (

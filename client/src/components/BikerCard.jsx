@@ -5,12 +5,13 @@ import ThirdGenderLogo from '../assets/img/thirdgender.png';
 import "../assets/css/biker-card.css"
 
 const BikerCard = ({ biker }) => {
-  const { _id, bikeno, phoneno, licensecheck, helmetcheck, location, department, year } = biker;
+  const { _id, bikeno, phoneno, licensecheck, helmetcheck, location, department, year, image } = biker;
   const [userName, setUserName] = useState('');
   const [userLogo, setUserLogo] = useState(null);
   const [licenseChecked, setLicenseChecked] = useState(licensecheck);
   const [helmetChecked, setHelmetChecked] = useState(helmetcheck);
   const [gender, setGender] = useState('male');
+
   useEffect(() => {
     const fetchUserName = async () => {
       try {
@@ -57,7 +58,11 @@ const BikerCard = ({ biker }) => {
     <div className="grid">
       <div className="product-card">
         <div className="user-logo" style={{ textAlign: 'center', height: '150px' }}>
-          {userLogo && <img src={userLogo} alt={gender} style={{ width: '150px' }} />}
+          {image ? (
+            <img className="mt-3" src={`http://localhost:5000/uploads/` + image} alt="User Image" style={{ width: '150px',height:"150px" }} />
+          ) : (
+            userLogo && <img src={userLogo} alt={gender} style={{ width: '150px' }} />
+          )}
         </div>
         <div className="product-details">
           <span className="product-catagory">{bikeno}</span>
