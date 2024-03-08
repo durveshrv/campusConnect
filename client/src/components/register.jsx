@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 import * as userService from "../services/userService";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/react-toastify.esm";
-
+import bg from "../assets/img/bg.jpeg";
 class Register extends Form {
   state = {
     data: { phoneno:"",username: "", email: "", password: "", password2: "", name: "", gender: "" },
@@ -46,11 +46,14 @@ class Register extends Form {
     }
 
     return (
+      <div style={{backgroundImage: `url(${bg})`, height: '100vh'}}>
       <React.Fragment>
         <ToastContainer />
-        <div className="container-fluid col-lg-4 col-md-8">
-          <h1>Register</h1>
-          <form onSubmit={this.handleSubmit}>
+        <div>
+          <h1 className="text-center text-light py-3">Register</h1>
+          <section className="container my-2 bg-dark w-100 text-light p-2">
+          <form className="row g-3 p-3" onSubmit={this.handleSubmit}>
+          <div className="col-md-6">
             <Input
               value={data.name}
               onChange={this.handleChange}
@@ -59,6 +62,8 @@ class Register extends Form {
               type="text"
               error={errors.name}
             />
+          </div>
+          <div className="col-md-6">
             <Input
               name="username"
               value={data.username}
@@ -67,6 +72,8 @@ class Register extends Form {
               onChange={this.handleChange}
               error={errors.username}
             />
+          </div>
+          <div className="col-md-6">
             <Input
               value={data.phoneno}
               onChange={this.handleChange}
@@ -75,6 +82,8 @@ class Register extends Form {
               type="text"
               error={errors.phoneno}
             />
+          </div>
+          <div className="col-md-6">
             <Input
               value={data.email}
               onChange={this.handleChange}
@@ -83,6 +92,8 @@ class Register extends Form {
               name="email"
               error={errors.email}
             />
+          </div>
+          <div className="col-md-6">
             <Input
               value={data.password}
               onChange={this.handleChange}
@@ -91,6 +102,8 @@ class Register extends Form {
               name="password"
               error={errors.password}
             />
+          </div>
+          <div className="col-md-6">
             <Input
               value={data.password2}
               onChange={this.handleChange}
@@ -99,6 +112,8 @@ class Register extends Form {
               type="password"
               error={errors.password2}
             />
+          </div>
+          <div className="col-md-6">
             <Input
               value={data.gender}
               onChange={this.handleChange}
@@ -107,14 +122,17 @@ class Register extends Form {
               type="text"
               error={errors.gender}
             />
-            <div className="d-grid gap-2">
-              <button className="btn btn-primary" disabled={this.validate()}>
+          </div> 
+            <div className="col-12 mt-3">
+              <button className="btn btn-primary w-100" disabled={this.validate()}>
                 Register
               </button>
             </div>
           </form> 
+          </section>
         </div>
       </React.Fragment>
+      </div>
     );
   }
 }

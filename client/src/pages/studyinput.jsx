@@ -3,9 +3,9 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import DashNav from "../components/DashNav";
+import bg from "../assets/img/bg.jpeg";
 
-const Studyinput = () => {
+export default function Studyinput() {
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
   const [phoneno, setPhone] = useState("");
@@ -76,16 +76,22 @@ const Studyinput = () => {
   };
 
   if (redirectToStudyOption) {
-    return <Redirect to="/study_option" />;
+    return <Redirect to="/studyout" />;
   }
 
   return (
-    <div className="flex">
-      <div className="container mx-auto p-5" style={{ width: "500px" }}>
-        <div className="bg-gray-100 rounded-lg p-6">
-          <h3 className="text-lg font-bold mb-4">Hello, Enter Information</h3>
-          <form onSubmit={Submit}>
-            <div className="mb-3">
+    <div style={{backgroundImage: `url(${bg})`, height: '100vh'}}>
+      <div  style={{boxSizing: "border-box",
+        margin: '0',
+        padding: "0"}}>
+        <div className="container-fluid text-light py-3">
+          <header className="text-center">
+            <h1 className="display-6">Hello, Enter Information</h1>
+          </header>
+        </div>
+        <section className="container my-2 bg-dark w-50 text-light p-2">
+          <form className="row g-3 p-3" onSubmit={Submit}>
+            <div className="col-md-6">
               <label htmlFor="name" className="form-label">
                 Name
               </label>
@@ -99,7 +105,7 @@ const Studyinput = () => {
                 required
               />
             </div>
-            <div className="mb-3">
+            <div className="col-md-6">
               <label htmlFor="subject" className="form-label">
                 Subject
               </label>
@@ -113,7 +119,7 @@ const Studyinput = () => {
                 required
               />
             </div>
-            <div className="mb-3">
+            <div className="col-md-6 mt-3">
               <label htmlFor="phoneno" className="form-label">
                 Phone Number
               </label>
@@ -127,14 +133,14 @@ const Studyinput = () => {
                 required
               />
             </div>
-            <div className="mb-3">
+            <div className="col-md-6 mt-3">
               <label htmlFor="platform" className="form-label">
                 Platform
               </label>
               <select
                 name="platform"
                 id="platform"
-                className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+                className="form-select bg-gray-100 rounded-lg p-2 w-100"
                 onChange={(e) => setPF(e.target.value)}
                 value={platform}
               >
@@ -145,14 +151,14 @@ const Studyinput = () => {
                 <option value="INVITCOLLEGE">InCollege</option>
               </select>
             </div>
-            <div className="mb-3">
+            <div className="col-md-6 mt-3">
               <label htmlFor="department" className="form-label">
                 Department
               </label>
               <select
                 name="department"
                 id="department"
-                className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+                className="form-select bg-gray-100 rounded-lg p-2 w-100"
                 onChange={(e) => setDept(e.target.value)}
                 value={department}
               >
@@ -166,14 +172,14 @@ const Studyinput = () => {
                 <option value="Instrument">Instrumentation</option>
               </select>
             </div>
-            <div className="mb-3">
-              <label htmlFor="year" className="form-label">
+            <div className="col-md-6 mt-3">
+            <label htmlFor="year" className="form-label">
                 Year
               </label>
               <select
                 name="year"
                 id="year"
-                className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+                className="form-select bg-gray-100 rounded-lg p-2 w-100"
                 onChange={(e) => setYear(e.target.value)}
                 value={year}
               >
@@ -184,7 +190,7 @@ const Studyinput = () => {
                 <option value="All">For all</option>
               </select>
             </div>
-            <div className="mb-3">
+            <div className="col-md-6 mt-3">
               <label htmlFor="meetlink1" className="form-label">
                 Platform Link
               </label>
@@ -198,7 +204,7 @@ const Studyinput = () => {
                 required
               />
             </div>
-            <div className="mb-3">
+            <div className="col-md-6 mt-3">
               <label htmlFor="appt" className="form-label">
                 Select a time
               </label>
@@ -210,14 +216,14 @@ const Studyinput = () => {
                 onChange={(e) => setAppt(e.target.value)}
               />
             </div>
-            <button type="submit" className="btn btn-primary">
-              Get your Study Buddy
-            </button>
+            <div className="col-12 mt-3">
+              <button type="submit" className="btn btn-primary w-100">
+                Create the Session
+              </button>
+            </div>
           </form>
-        </div>
+        </section>
       </div>
     </div>
   );
-};
-
-export default Studyinput;
+}

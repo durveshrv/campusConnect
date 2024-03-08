@@ -10,12 +10,12 @@ import { IoBed, IoLogOut } from "react-icons/io5";
 import { GiBuyCard } from "react-icons/gi";
 import DashNav from "../DashNav";
 import { AuthContext } from "../../Store/Context";
-
+import bg from "../../assets/img/bg.jpeg";
 const Jumotron = () => {
   const { setIsSellButtonVisible } = useContext(AuthContext);
   
   return (
-    <div style={{ display: "flex"}}>
+    <div style={{ display: "flex",backgroundImage: `url(${bg})`, height: '100vh'}}>
       {/* DashNav on the left */}
       {/* <DashNav /> */}
       <div id="wrapper" style={{width:"100%"}}>

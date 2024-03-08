@@ -71,7 +71,7 @@ function Create() {
   return (
     <>
       <card>
-        <div className="centerDiv">
+        <div className="centerDiv mt-5">
           <p style={{ height: '20px' }}>{err}</p>
           <form onSubmit={handleSubmit}>
             <label htmlFor="fname">Enter the Product Name</label>

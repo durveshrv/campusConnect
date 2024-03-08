@@ -72,7 +72,7 @@ const NavBar = ({ user, history }) => {
               <li className="nav-item active">
                 <NavLink
                   className="nav-link ml-3 flex items-center"
-                  to="/studyinput"
+                  to="/shareroom"
                 >
                   Do you want to share room?
                   <FaHome className="ml-1" size={20}/>

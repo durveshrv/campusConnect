@@ -101,7 +101,7 @@ export default function Shareroom() {
                   name="hostelName"
                   id="hostelName"
                   placeholder="Enter your PG/Hostel Name"
-                  className="form-control"
+                  className="form-input"
                   onChange={(e) => setHostelName(e.target.value)}
                   required
                 />
@@ -115,12 +115,12 @@ export default function Shareroom() {
                   name="address"
                   id="address"
                   placeholder="Enter your PG/Hostel's Address"
-                  className="form-control"
+                  className="form-input"
                   onChange={(e) => setAddress(e.target.value)}
                   required
                 />
             </div>
-            <div className="col-md-6 mt-3">
+            <div className="col-md-6">
               <label htmlFor="phoneno" className="form-label">
                 Phone Number
               </label>
@@ -129,7 +129,7 @@ export default function Shareroom() {
                   name="phoneNumber"
                   id="phoneNumber"
                   placeholder="Enter your Phone No."
-                  className="form-control"
+                  className="form-input"
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   required
                 />
@@ -141,7 +141,7 @@ export default function Shareroom() {
               <select
                 name="department"
                 id="department"
-                className="form-select bg-gray-100 rounded-lg p-2 w-100"
+                className="form-select mx-2 bg-gray-100 rounded-lg p-2 w-100"
                 onChange={(e) => setDepartment(e.target.value)}
                 value={department}
               >
@@ -162,7 +162,7 @@ export default function Shareroom() {
               <select
                 name="year"
                 id="year"
-                className="form-select bg-gray-100 rounded-lg p-2 w-100"
+                className="form-select mx-2 bg-gray-100 rounded-lg p-2 w-100"
                 onChange={(e) => setYear(e.target.value)}
                 value={year}
               >
@@ -173,7 +173,7 @@ export default function Shareroom() {
                 <option value="All">For all</option>
               </select>
             </div>
-            <div className="col-md-6 mt-3">
+            <div className="col-md-6">
                 <label htmlFor="roomType" className="form-label">
                   Room Type
                 </label>
@@ -181,7 +181,7 @@ export default function Shareroom() {
                   type="text"
                   name="roomType"
                   placeholder="Enter Room's Type (Eg.1bhk)"
-                  className="form-control"
+                  className="form-input"
                   onChange={(e) => setRoomType(e.target.value)}
                   required
                 />

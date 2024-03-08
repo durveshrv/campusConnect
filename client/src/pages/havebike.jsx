@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import DashNav from "../components/DashNav";
 import { Redirect } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import bg from "../assets/img/bg.jpeg";
 
-function HaveBike() {
+export default function HaveBike() {
   const [bikeno, setBike] = useState("");
   const [phoneno, setPhoneno] = useState("");
   const [licensecheck, setLicense] = useState(false);
@@ -14,6 +14,7 @@ function HaveBike() {
   const [department, setDept] = useState("");
   const [year, setYear] = useState("");
   const [image, setImage] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
@@ -60,10 +61,7 @@ function HaveBike() {
     formData.append("year", year);
     formData.append("image", image);
     try {
-      const result = await axios.post(
-        "http://localhost:5000/biker",
-        formData
-      );
+      const result = await axios.post("http://localhost:5000/biker", formData);
 
       console.log(result.data);
       setRedirect(true);
@@ -101,19 +99,28 @@ function HaveBike() {
   if (redirect) {
     return <Redirect to="/bike_buddy" />;
   }
+
   const onInputChange = (e) => {
     const selectedFile = e.target.files[0];
     console.log(selectedFile);
     setImage(selectedFile);
+    const imageUrl = URL.createObjectURL(selectedFile);
+    setImageUrl(imageUrl);
   };
 
   return (
-    <div className="flex">
-      <div className="container mx-auto p-5 w-96">
-        <div className="bg-gray-100 rounded-lg p-6">
-          <h3 className="text-lg font-bold mb-4">Hello, Enter Information</h3>
-          <form onSubmit={Submit}>
-            <div className="mb-3">
+    <div style={{backgroundImage: `url(${bg})`, height: '100vh'}}>
+      <div  style={{boxSizing: "border-box",
+        margin: '0',
+        padding: "0"}}>
+        <div className="container-fluid text-light py-3">
+          <header className="text-center">
+            <h1 className="display-6">Hello, Enter Information</h1>
+          </header>
+        </div>
+        <section className="container my-2 bg-dark w-50 text-light p-2">
+          <form className="row g-3 p-3" onSubmit={Submit}>
+            <div className="col-md-6">
               <label htmlFor="bikeno" className="form-label">
                 Vehicle No.
               </label>
@@ -127,7 +134,7 @@ function HaveBike() {
                 required
               />
             </div>
-            <div className="mb-3">
+            <div className="col-md-6">
               <label htmlFor="phoneno" className="form-label">
                 Phone Number
               </label>
@@ -141,40 +148,43 @@ function HaveBike() {
                 required
               />
             </div>
-            <div className="mb-3 form-check">
-              <input
-                type="checkbox"
-                id="licensecheck"
-                name="licensecheck"
-                className="form-check-input"
-                onChange={() => setLicense(!licensecheck)}
-                checked={licensecheck}
-                required
-              />
-              <label className="form-check-label" htmlFor="licensecheck">
-                I have Driver's License
-              </label>
-              <br />
-              <input
-                type="checkbox"
-                id="helmetcheck"
-                name="helmetcheck"
-                className="form-check-input"
-                onChange={() => setHelmet(!helmetcheck)}
-                checked={helmetcheck}
-              />
-              <label className="form-check-label" htmlFor="helmetcheck">
-                Extra Helmet
-              </label>
+            <div className="col-12 row g-3 p-3 mx-4">
+              <div className="form-check">
+                <input
+                  type="checkbox"
+                  id="licensecheck"
+                  name="licensecheck"
+                  className="form-check-input"
+                  onChange={() => setLicense(!licensecheck)}
+                  checked={licensecheck}
+                  required
+                />
+                <label className="form-check-label" htmlFor="licensecheck">
+                  I have Driver's License
+                </label>
+              </div>
+              <div className="form-check mx-4">
+                <input
+                  type="checkbox"
+                  id="helmetcheck"
+                  name="helmetcheck"
+                  className="form-check-input"
+                  onChange={() => setHelmet(!helmetcheck)}
+                  checked={helmetcheck}
+                />
+                <label className="form-check-label" htmlFor="helmetcheck">
+                  Extra Helmet
+                </label>
+              </div>
             </div>
-            <div className="mb-3">
+            <div className="col-md-6 g-3">
               <label htmlFor="location" className="form-label">
                 Location
               </label>
               <select
                 name="location"
                 id="location"
-                className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+                className="form-select bg-gray-100 rounded-lg p-2 w-100"
                 onChange={(e) => setLocation(e.target.value)}
                 required
               >
@@ -185,14 +195,14 @@ function HaveBike() {
                 <option value="Pimpri Chinchwad">Pimpri Chinchwad</option>
               </select>
             </div>
-            <div className="mb-3">
+            <div className="col-md-6">
               <label htmlFor="department" className="form-label">
                 Department
               </label>
               <select
                 name="department"
                 id="department"
-                className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+                className="form-select bg-gray-100 rounded-lg p-2 w-100"
                 onChange={(e) => setDept(e.target.value)}
                 required
               >
@@ -203,14 +213,14 @@ function HaveBike() {
                 <option value="EC">EC</option>
               </select>
             </div>
-            <div className="mb-3">
+            <div className="col-md-6 mt-3">
               <label htmlFor="year" className="form-label">
                 Year
               </label>
               <select
                 name="year"
                 id="year"
-                className="form-select mx-2 bg-gray-100 rounded-lg p-6"
+                className="form-select bg-gray-100 rounded-lg p-2 w-100"
                 onChange={(e) => setYear(e.target.value)}
                 required
               >
@@ -220,30 +230,35 @@ function HaveBike() {
                 <option value="BE">BE</option>
               </select>
             </div>
-            <div className="mb-3">
-              <label htmlFor="image" className="form-label">
-                Upload Profile Photo
-              </label>
-              <input
-                type="file"
-                name="image"
-                placeholder="Photos"
-                className="form-input"
-                onChange={onInputChange}
-                required
-                accept="image/*"
-              />
-              {/* {file && <img style={{ width: "50px" }} src={`http://localhost:5000/uploads/` + file} alt="image" />} */}
+            <div className="col-12 mt-3 row">
+              <div className="mx-3">
+                <label htmlFor="image" className="form-label">
+                  Upload Profile Photo
+                </label><br/>
+                <input
+                  type="file"
+                  name="image"
+                  placeholder="Photos"
+                  className="form-input"
+                  onChange={onInputChange}
+                  required
+                  accept="image/*"
+                />
+              </div>
+              <div>
+                {imageUrl && (
+                  <img src={imageUrl} alt="Uploaded" style={{ width: "100px", height: "100px", marginTop: "10px" }} />
+                )}
+              </div>
             </div>
-            <button type="submit" className="btn btn-primary">
-              Get your Bike Partner
-            </button>
+            <div className="col-12 mt-3">
+              <button type="submit" className="btn btn-primary w-100">
+                Get Your Bike Partner
+              </button>
+            </div>
           </form>
-        </div>
-        <ToastContainer />
+        </section>
       </div>
     </div>
   );
 }
-
-export default HaveBike;

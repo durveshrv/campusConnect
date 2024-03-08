@@ -7,7 +7,6 @@ import { Redirect } from "react-router-dom"; // Import Redirect from react-route
 import DashNav from "../components/DashNav";
 import BikerCard from "../components/BikerCard";
 import SearchBar from "../components/SearchBar";
-
 function Bkbud() {
   const [location, setLocation] = useState("Chintamaninagar2");
   const [error, setError] = useState("");
@@ -45,7 +44,7 @@ function Bkbud() {
   }
 
   return (
-    <div style={{ fontFamily: "Lato, sans-serif", lineHeight: "30px" }}>
+    <div style={{ fontFamily: "Lato, sans-serif", lineHeight: "30px",backgroundColor:"grey" }} >
       <div id="wrapper">
         {/* <DashNav /> */}
         <div id="page-wrapper">
