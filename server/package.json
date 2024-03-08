@@ -21,9 +21,11 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "build":"npm install"
+    "backend": "nodemon index.js",
+    "frontend": "npm start --prefix ./client",
+    "dev": "concurrently \"npm start\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
