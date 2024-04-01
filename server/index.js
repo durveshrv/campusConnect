@@ -1,9 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
-const path=require('path');
-const config = require("config");
+const path = require('path');
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const users = require("./routes/users");
@@ -11,15 +9,16 @@ const posts = require("./routes/posts");
 const tags = require("./routes/tags");
 const replies = require("./routes/replies");
 const UserModel = require("./models/user");
-const User=UserModel.User
-const products=require('./routes/products')
+const User = UserModel.User;
+const products = require('./routes/products');
 const bikers = require("./routes/bikers");
 const Biker = require("./models/Biker");
 const Room = require("./models/Room");
 const Event = require("./models/Events");
-const auth=require('./middleware/auth')
+const auth = require('./middleware/auth');
+const multer = require("multer");
 const app = express();
-const multer=require("multer");
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/uploads/");
@@ -29,10 +28,9 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix + path.extname(file.originalname));
   }
 });
-const upload=multer({storage:storage});
+const upload = multer({ storage: storage });
 let mongoDBURL = process.env.mongoDBURL;
-app.use(express.static('public'));
-app.use(express.static(path.resolve()+"/public"))
+
 mongoose
   .connect(mongoDBURL, {
     useNewUrlParser: true,
@@ -43,6 +41,8 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("could not connect to mongoDB"));
 
+app.use(express.static('public'));
+app.use(express.static(path.resolve() + "/public"))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -56,17 +56,21 @@ app.use("/users", users);
 app.use("/posts", posts);
 app.use("/tags", tags);
 app.use("/reply", replies);
-// app.use("/bikers", bikers);
-app.use('/',products);
-//adding biker
-app.post("/biker",upload.single("image"), async (req, res) => {
+app.use('/', products);
+app.use('/apix', createProxyMiddleware({ 
+  target: 'https://api.botpress.cloud/v1/chat', // Corrected target URL
+  changeOrigin: true,
+  secure: false,
+}));
+
+app.post("/biker", upload.single("image"), async (req, res) => {
   console.log("Request File:", req.file);
   console.log("Request Body:", req.body);
-  const { bikeno, phoneno,licensecheck,helmetcheck,location, department, year } = req.body;
+  const { bikeno, phoneno, licensecheck, helmetcheck, location, department, year } = req.body;
   const image = req.file.filename;
   try {
     const biker = new Biker({
-      bikeno, phoneno,licensecheck,helmetcheck,location, department, year,image,
+      bikeno, phoneno, licensecheck, helmetcheck, location, department, year, image,
     })
     await biker.save();
     console.log("Biker created:", biker);
@@ -78,8 +82,8 @@ app.post("/biker",upload.single("image"), async (req, res) => {
       .json({ error: "Internal Server Error", details: err.message });
   }
 });
-//adding room profile
-app.post("/room",upload.single("image"), async (req, res) => {
+
+app.post("/room", upload.single("image"), async (req, res) => {
   console.log("Request File:", req.file);  // Log the file details
   const { hostel_name, address, phoneno, department, year, room_type } = req.body;
   const image = req.file.filename;
@@ -103,13 +107,13 @@ app.post("/room",upload.single("image"), async (req, res) => {
       .json({ error: "Internal Server Error", details: err.message });
   }
 });
-//getting room data
-app.get('/getroom',(req,res)=>{
+
+app.get('/getroom', (req, res) => {
   Room.find()
-  .then(room=>res.json(room))
-  .catch(err=>res.json(err))
-})
-//adding event
+    .then(room => res.json(room))
+    .catch(err => res.json(err))
+});
+
 app.post("/event", async (req, res) => {
   console.log("Request Body:", req.body);
   try {
@@ -124,21 +128,21 @@ app.post("/event", async (req, res) => {
   }
 });
 
-app.get('/about', auth,async (req, res) => {
-  try{
-    userId=req.userId;  
+app.get('/about', auth, async (req, res) => {
+  try {
+    userId = req.userId;
     console.log(userId);
-    const user=await User.find({_id:userId}).select("-password")
+    const user = await User.find({ _id: userId }).select("-password")
     if (!user) {
       return res.status(404).send("User not found");
     }
     res.send(user);
-  }catch (error){
+  } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
   }
 });
-//finding partner
+
 app.post("/bike_partner", async (req, res) => {
   try {
     const { location } = req.body;
@@ -149,7 +153,7 @@ app.post("/bike_partner", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-//get_selective_events
+
 app.post("/getevents", async (req, res) => {
   try {
     const { subject } = req.body;
@@ -160,28 +164,28 @@ app.post("/getevents", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-//getallbikers
+
 app.get('/getallbikers', async (req, res) => {
   try {
-  const bikers = await Biker.find();
-  res.json(bikers);
+    const bikers = await Biker.find();
+    res.json(bikers);
   } catch (error) {
-  console.error(error);
-  res.status(500).send('Internal Server Error');
+    console.error(error);
+    res.status(500).send('Internal Server Error');
   }
 });
-//get all rooms
+
 app.get('/getallrooms', async (req, res) => {
   try {
-  const rooms = await Room.find();
-  console.log(rooms);
-  res.send(rooms);
+    const rooms = await Room.find();
+    console.log(rooms);
+    res.send(rooms);
   } catch (error) {
-  console.error(error);
-  res.status(500).send('Internal Server Error');
+    console.error(error);
+    res.status(500).send('Internal Server Error');
   }
 });
-//event-join
+
 app.get("/event_join", async (req, res) => {
   try {
     const events = await Event.find();
@@ -191,30 +195,27 @@ app.get("/event_join", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-//finding username
+
 app.get("/api/users", async (req, res) => {
   try {
     const { phoneno } = req.query;
-    const user = await User.findOne({phoneno});
-    
+    const user = await User.findOne({ phoneno });
+
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
     res.json({
       _id: user._id,
       name: user.name,
-      gender:user.gender,
+      gender: user.gender,
     });
   } catch (error) {
     console.error("Error fetching user details:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 const port = process.env.PORT || 4000;
-// app.use(express.static("../frontend/build"));
-// app.get("*",(req,res)=>{
-//   res.sendFile(path.resolve(__dirname,"frontend","build","index.html"))
-// })
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
 });

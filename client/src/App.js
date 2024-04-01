@@ -1,5 +1,6 @@
 import "./App.css";
-import React, { useState, useEffect,useContext} from "react";
+import axios from "axios";
+import React, { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min.js";
 import jwtDecode from "jwt-decode";
 import { Route, Switch, Redirect } from "react-router-dom";
@@ -30,12 +31,14 @@ import Buy_sell from "./pages/buy_sell.jsx";
 import ViewPost from "./pages/Viewpost.jsx";
 import CreatePage from "./pages/Create.jsx";
 import { AuthContext } from "./Store/Context.jsx";
+import Bot from "./pages/Bot.jsx";
+import { Chat } from "react-bootstrap-icons";
 const App = () => {
   const [user, setUser] = useState(null);
-  const {setIsSellButtonVisible } = useContext(AuthContext); // Access AuthContext values
-  const {sethavebikebtnvisible}=useContext(AuthContext);
-  const {sethaveeventbtnvisible}=useContext(AuthContext);
-  const {sethaveroombtnvisible}=useContext(AuthContext);
+  const { setIsSellButtonVisible } = useContext(AuthContext); // Access AuthContext values
+  const { sethavebikebtnvisible } = useContext(AuthContext);
+  const { sethaveeventbtnvisible } = useContext(AuthContext);
+  const { sethaveroombtnvisible } = useContext(AuthContext);
   const location = useLocation();
   useEffect(() => {
     const fetchUser = async () => {
@@ -51,17 +54,22 @@ const App = () => {
 
     fetchUser();
   }, []);
+
   useEffect(() => {
     const path = location.pathname;
-    setIsSellButtonVisible(path === "/sell" || path === "/view/:id" || path === "/buy_sell");
-    sethavebikebtnvisible(path === "/bike_buddy" || path === "/have_bike")
-    sethaveeventbtnvisible(path === "/studyout" || path === "/studyinput")
-    sethaveroombtnvisible(path === "/shareroom" || path === "/roomfinderlist")
+    setIsSellButtonVisible(
+      path === "/sell" || path === "/view/:id" || path === "/buy_sell"
+    );
+    sethavebikebtnvisible(path === "/bike_buddy" || path === "/have_bike");
+    sethaveeventbtnvisible(path === "/studyout" || path === "/studyinput");
+    sethaveroombtnvisible(
+      path === "/shareroom" || path === "/roomfinderlist"
+    );
   }, [location, setIsSellButtonVisible]);
 
   return (
     <div>
-      <NavBar user={user}/>
+      <NavBar user={user} />
       <Switch>
         <Route path="/users/login" component={Log} />
         <Route path="/users/register" component={Register} />
@@ -70,20 +78,30 @@ const App = () => {
           path="/dashboard"
           render={(props) => <Dashboard {...props} user={user} />}
         />
-        <Route exact path="/" render={(props) => <Jumotron {...props} setIsSellButtonVisible={setIsSellButtonVisible} />} />
+        <Route
+          exact
+          path="/"
+          render={(props) => (
+            <Jumotron
+              {...props}
+              setIsSellButtonVisible={setIsSellButtonVisible}
+            />
+          )}
+        />
         <Route exact path="/bike_buddy" component={Bkbud} />
         <Route exact path="/biker_list" component={BikerList} />
-        <Route exact path="/have_bike" component={HaveBike} />
+        <Route exact path="/have_bike" component={HaveBike} /> 
         <Route exact path="/study_options" component={StudyOption} />
         <Route exact path="/studyinput" component={Studyinput} />
+        <Route exact path="/bot" component={Bot} />
         <Route exact path="/studyout" component={Studyout} />
         <Route exact path="/roommate" component={Roommate} />
         <Route exact path="/shareroom" component={Shareroom} />
         <Route exact path="/studyout" component={Studyout} />
         <Route exact path="/roomfinderlist" component={Roomfinder} />
         <Route exact path="/buy_sell" component={Buy_sell} />
-        <Route exact path='/view/:id' component={ViewPost} />
-        <Route path='/sell' component={CreatePage}/>
+        <Route exact path="/view/:id" component={ViewPost} />
+        <Route path="/sell" component={CreatePage} />
         <Route
           path="/index"
           render={(props) => <Dashboard {...props} user={user} />}
@@ -101,7 +119,6 @@ const App = () => {
         <Redirect to="/not-found" />
       </Switch>
     </div>
-    
   );
 };
 
