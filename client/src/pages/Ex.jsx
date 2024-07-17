@@ -28,7 +28,7 @@ export default function Shareroom() {
     formData.append("image", image);
 
     try {
-      const result = await axios.post("http://localhost:5000/room", formData);
+      const result = await axios.post("https://campusconnect-1.onrender.com/room", formData);
 
       console.log(result.data);
       setRedirect(true);
@@ -55,7 +55,7 @@ export default function Shareroom() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/getroom")
+      .get("https://campusconnect-1.onrender.com/getroom")
       .then((res) => setImage(res.data[1].image))
       .catch((err) => console.log(err));
   }, []);

@@ -8,7 +8,7 @@ import { AuthContext } from '../../Store/Context';
 function Post() {
   const { search, setSearch, category } = useContext(AuthContext);
   const [product, setProduct] = useState([]);
-  const imgURL = 'http://localhost:5000/upload_img/';
+  const imgURL = 'https://campusconnect-1.onrender.com/upload_img/';
 
   useEffect(() => {
     axios.get('/getProduct?search=' + search + '&category=' + category).then((response) => {

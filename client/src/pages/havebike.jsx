@@ -22,7 +22,7 @@ export default function HaveBike() {
 
     const callAboutPage = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/about", {
+        const res = await axios.get("https://campusconnect-1.onrender.com/about", {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -61,7 +61,7 @@ export default function HaveBike() {
     formData.append("year", year);
     formData.append("image", image);
     try {
-      const result = await axios.post("http://localhost:5000/biker", formData);
+      const result = await axios.post("https://campusconnect-1.onrender.com/biker", formData);
 
       console.log(result.data);
       setRedirect(true);

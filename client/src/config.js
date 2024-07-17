@@ -1,6 +1,6 @@
 export const api = {  
-  tagsEndPoint: 'http://localhost:5000/tags/',
-  usersEndPoint: 'http://localhost:5000/users/',
-  postsEndPoint: 'http://localhost:5000/posts/',
-  repliesEndPoint: 'http://localhost:5000/reply/',
+  tagsEndPoint: 'https://campusconnect-1.onrender.com/tags/',
+  usersEndPoint: 'https://campusconnect-1.onrender.com/users/',
+  postsEndPoint: 'https://campusconnect-1.onrender.com/posts/',
+  repliesEndPoint: 'https://campusconnect-1.onrender.com/reply/',
 }

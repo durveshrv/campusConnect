@@ -11,9 +11,9 @@ function Studyout() {
     try {
       let res;
       if (subject === "All") {
-        res = await axios.get("http://localhost:5000/event_join");
+        res = await axios.get("https://campusconnect-1.onrender.com/event_join");
       } else {
-        res = await axios.post("http://localhost:5000/getevents", {
+        res = await axios.post("https://campusconnect-1.onrender.com/getevents", {
           subject,
         });
       }

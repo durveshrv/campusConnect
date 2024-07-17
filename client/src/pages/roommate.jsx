@@ -8,7 +8,7 @@ const Roommate = () => {
 
   const callAboutPage = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/about", {
+      const res = await axios.get("https://campusconnect-1.onrender.com/about", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

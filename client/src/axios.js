@@ -2,7 +2,7 @@ import axios from "axios";
  
 
 const instance = axios.create({
-    baseURL:'http://localhost:5000/',
+    baseURL:'https://campusconnect-1.onrender.com/',
   });
 
   export default instance;

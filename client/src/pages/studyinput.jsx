@@ -19,7 +19,7 @@ export default function Studyinput() {
 
   const callAboutPage = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/about", {
+      const res = await axios.get("https://campusconnect-1.onrender.com/about", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export default function Studyinput() {
 
     try {
       const result = await axios.post(
-        "http://localhost:5000/event",
+        "https://campusconnect-1.onrender.com/event",
         {
           name,
           subject,

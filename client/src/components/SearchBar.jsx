@@ -13,9 +13,9 @@ const SearchBar = () => {
     try {
       let res;
       if (location === 'All') {
-        res = await axios.get("http://localhost:5000/getallbikers");
+        res = await axios.get("https://campusconnect-1.onrender.com/getallbikers");
       } else {
-        res = await axios.post("http://localhost:5000/bike_partner", {
+        res = await axios.post("https://campusconnect-1.onrender.com/bike_partner", {
           location
         });
       }

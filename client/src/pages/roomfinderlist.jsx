@@ -6,7 +6,7 @@ const Roomfinder = () => {
   const [rooms, setRooms] = useState([]); // Change here to initialize bikers as an array
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/getallrooms");
+      const res = await axios.get("https://campusconnect-1.onrender.com/getallrooms");
       setRooms(res.data);
       console.log(res.data);
     } catch (err) {
