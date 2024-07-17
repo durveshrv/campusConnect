@@ -31,7 +31,6 @@ import Buy_sell from "./pages/buy_sell.jsx";
 import ViewPost from "./pages/Viewpost.jsx";
 import CreatePage from "./pages/Create.jsx";
 import { AuthContext } from "./Store/Context.jsx";
-import Bot from "./pages/Bot.jsx";
 import { Chat } from "react-bootstrap-icons";
 const App = () => {
   const [user, setUser] = useState(null);
@@ -93,7 +92,6 @@ const App = () => {
         <Route exact path="/have_bike" component={HaveBike} /> 
         <Route exact path="/study_options" component={StudyOption} />
         <Route exact path="/studyinput" component={Studyinput} />
-        <Route exact path="/bot" component={Bot} />
         <Route exact path="/studyout" component={Studyout} />
         <Route exact path="/roommate" component={Roommate} />
         <Route exact path="/shareroom" component={Shareroom} />
