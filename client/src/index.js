@@ -8,14 +8,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "font-awesome/css/font-awesome.css";
 import Context from "./Store/Context";
 
-
 ReactDOM.render(
   <React.StrictMode>
-    
-     <App/>
-     </Context>
-    </BrowserRouter>,<BrowserRouter>
-     <Context>
+    <BrowserRouter>
+      <Context>
+        <App />
+      </Context>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
