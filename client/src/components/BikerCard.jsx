@@ -59,7 +59,7 @@ const BikerCard = ({ biker }) => {
       <div className="product-card">
         <div className="user-logo" style={{ textAlign: 'center', height: '150px' }}>
           {image ? (
-            <img className="mt-3" src={`http://localhost:5000/uploads/` + image} alt="User Image" style={{ width: '150px',height:"150px" }} />
+            <img className="mt-3" src={`https://campusconnect-1.onrender.com/uploads/` + image} alt="User Image" style={{ width: '150px',height:"150px" }} />
           ) : (
             userLogo && <img src={userLogo} alt={gender} style={{ width: '150px' }} />
           )}

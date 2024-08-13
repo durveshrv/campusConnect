@@ -61,7 +61,7 @@ const RoomCard = ({ room }) => {
             </button>
           </div>
         </div>
-        <img alt="ecommerce" style={{width:"280px"}} className="lg:w-1/2 mx-5 h-64 object-cover object-center rounded" src={`http://localhost:5000/uploads/` + image} />
+        <img alt="ecommerce" style={{width:"280px"}} className="lg:w-1/2 mx-5 h-64 object-cover object-center rounded" src={`https://campusconnect-1.onrender.com/uploads/` + image} />
       </div>
     </section>
   );

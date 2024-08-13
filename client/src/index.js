@@ -11,11 +11,11 @@ import Context from "./Store/Context";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-     <Context>
+    
      <App/>
      </Context>
-    </BrowserRouter>,
+    </BrowserRouter>,<BrowserRouter>
+     <Context>
   </React.StrictMode>,
   document.getElementById("root")
 );

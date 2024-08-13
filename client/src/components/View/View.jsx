@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function View() {
   const [product, setProduct] = useState('')
   const id=useParams()
-  const imgURL='http://localhost:5000/upload_img/'
+  const imgURL='https://campusconnect-1.onrender.com/upload_img/'
   console.log(id.id);
   useEffect(() => {
     axios.get('/viewProduct/'+id.id).then((response)=>{
